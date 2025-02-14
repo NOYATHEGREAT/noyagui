@@ -1,4 +1,7 @@
+import config.dbconn;
 import java.awt.Color;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 
 public class registrationform extends javax.swing.JFrame {
@@ -7,6 +10,14 @@ public class registrationform extends javax.swing.JFrame {
      
     public registrationform() {
         initComponents();
+    }
+    private boolean isEmailValid(String email) {
+        // More robust regex (but still not perfect for all valid email addresses)
+        String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$";
+        // Compile the regex pattern only ONCE (outside the function for efficiency)
+        Pattern pattern = Pattern.compile(emailRegex);
+        Matcher matcher = pattern.matcher(email);
+        return matcher.matches();
     }
     Color orange = new Color(255,204,102);
     Color lightorange = new Color(245,216,127);
@@ -24,26 +35,25 @@ public class registrationform extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         title2 = new javax.swing.JLabel();
         usertxt2 = new javax.swing.JLabel();
-        userfield2 = new javax.swing.JTextField();
         emailtxt = new javax.swing.JLabel();
-        emailfield = new javax.swing.JTextField();
+        email = new javax.swing.JTextField();
         phonenumtxt = new javax.swing.JLabel();
-        phonenumfield = new javax.swing.JTextField();
+        ph = new javax.swing.JTextField();
         passtxt = new javax.swing.JLabel();
-        passfield2 = new javax.swing.JPasswordField();
+        pass = new javax.swing.JPasswordField();
         cpasstxt = new javax.swing.JLabel();
-        cpassfield = new javax.swing.JPasswordField();
+        cpass = new javax.swing.JPasswordField();
         backg3 = new javax.swing.JPanel();
         registerbtm4 = new javax.swing.JButton();
         cancelbtm = new javax.swing.JButton();
-        lfield = new javax.swing.JTextField();
+        lastname = new javax.swing.JTextField();
         lname = new javax.swing.JLabel();
-        ffield = new javax.swing.JTextField();
+        fname = new javax.swing.JTextField();
         Fname = new javax.swing.JLabel();
+        username = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(860, 610));
-        setPreferredSize(new java.awt.Dimension(860, 610));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -59,61 +69,56 @@ public class registrationform extends javax.swing.JFrame {
         usertxt2.setText("USERNAME");
         jPanel2.add(usertxt2, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 320, 80, -1));
 
-        userfield2.setBackground(new java.awt.Color(255, 204, 102));
-        userfield2.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        userfield2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
-        userfield2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                userfield2ActionPerformed(evt);
-            }
-        });
-        jPanel2.add(userfield2, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 340, 280, 40));
-
         emailtxt.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         emailtxt.setText("EMAIL");
         jPanel2.add(emailtxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 390, 80, -1));
 
-        emailfield.setBackground(new java.awt.Color(255, 204, 102));
-        emailfield.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        emailfield.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
-        emailfield.addActionListener(new java.awt.event.ActionListener() {
+        email.setBackground(new java.awt.Color(255, 204, 102));
+        email.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        email.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
+        email.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                emailfieldActionPerformed(evt);
+                emailActionPerformed(evt);
             }
         });
-        jPanel2.add(emailfield, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 410, 280, 40));
+        jPanel2.add(email, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 410, 280, 40));
 
         phonenumtxt.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         phonenumtxt.setText("PHONE NUMBER");
         jPanel2.add(phonenumtxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 460, 120, -1));
 
-        phonenumfield.setBackground(new java.awt.Color(255, 204, 102));
-        phonenumfield.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        phonenumfield.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
-        phonenumfield.addActionListener(new java.awt.event.ActionListener() {
+        ph.setBackground(new java.awt.Color(255, 204, 102));
+        ph.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        ph.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
+        ph.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                phonenumfieldActionPerformed(evt);
+                phActionPerformed(evt);
             }
         });
-        jPanel2.add(phonenumfield, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 480, 280, 40));
+        jPanel2.add(ph, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 480, 280, 40));
 
         passtxt.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         passtxt.setText("PASSWORD");
         jPanel2.add(passtxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 530, 80, -1));
 
-        passfield2.setBackground(new java.awt.Color(255, 204, 102));
-        passfield2.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        passfield2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
-        jPanel2.add(passfield2, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 550, 280, 40));
+        pass.setBackground(new java.awt.Color(255, 204, 102));
+        pass.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        pass.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
+        pass.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                passActionPerformed(evt);
+            }
+        });
+        jPanel2.add(pass, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 550, 280, 40));
 
         cpasstxt.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         cpasstxt.setText("CONFIRM PASSWORD");
         jPanel2.add(cpasstxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 600, 160, -1));
 
-        cpassfield.setBackground(new java.awt.Color(255, 204, 102));
-        cpassfield.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        cpassfield.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
-        jPanel2.add(cpassfield, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 620, 280, 40));
+        cpass.setBackground(new java.awt.Color(255, 204, 102));
+        cpass.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        cpass.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
+        jPanel2.add(cpass, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 620, 280, 40));
 
         backg3.setBackground(new java.awt.Color(255, 204, 153));
         backg3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -122,6 +127,9 @@ public class registrationform extends javax.swing.JFrame {
         registerbtm4.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         registerbtm4.setText("REGISTER NOW");
         registerbtm4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                registerbtm4MouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 registerbtm4MouseEntered(evt);
             }
@@ -140,6 +148,9 @@ public class registrationform extends javax.swing.JFrame {
         cancelbtm.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         cancelbtm.setText("CANCEL");
         cancelbtm.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cancelbtmMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 cancelbtmMouseEntered(evt);
             }
@@ -154,33 +165,43 @@ public class registrationform extends javax.swing.JFrame {
         });
         backg3.add(cancelbtm, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 630, 130, 40));
 
-        lfield.setBackground(new java.awt.Color(255, 204, 102));
-        lfield.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        lfield.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
-        lfield.addActionListener(new java.awt.event.ActionListener() {
+        lastname.setBackground(new java.awt.Color(255, 204, 102));
+        lastname.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        lastname.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
+        lastname.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                lfieldActionPerformed(evt);
+                lastnameActionPerformed(evt);
             }
         });
-        backg3.add(lfield, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 170, 280, 40));
+        backg3.add(lastname, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 170, 280, 40));
 
         lname.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         lname.setText("LASTNAME");
         backg3.add(lname, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 150, 80, -1));
 
-        ffield.setBackground(new java.awt.Color(255, 204, 102));
-        ffield.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        ffield.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
-        ffield.addActionListener(new java.awt.event.ActionListener() {
+        fname.setBackground(new java.awt.Color(255, 204, 102));
+        fname.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        fname.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
+        fname.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ffieldActionPerformed(evt);
+                fnameActionPerformed(evt);
             }
         });
-        backg3.add(ffield, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 100, 280, 40));
+        backg3.add(fname, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 100, 280, 40));
 
         Fname.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         Fname.setText("FIRST NAME");
         backg3.add(Fname, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 80, 110, -1));
+
+        username.setBackground(new java.awt.Color(255, 204, 102));
+        username.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        username.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
+        username.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                usernameActionPerformed(evt);
+            }
+        });
+        backg3.add(username, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 240, 280, 40));
 
         jPanel2.add(backg3, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 110, 450, 680));
 
@@ -189,67 +210,29 @@ public class registrationform extends javax.swing.JFrame {
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-90, -80, 960, 850));
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void emailfieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emailfieldActionPerformed
+    private void emailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emailActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_emailfieldActionPerformed
+    }//GEN-LAST:event_emailActionPerformed
 
-    private void phonenumfieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_phonenumfieldActionPerformed
+    private void phActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_phActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_phonenumfieldActionPerformed
+    }//GEN-LAST:event_phActionPerformed
 
-    private void userfield2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userfield2ActionPerformed
+    private void usernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usernameActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_userfield2ActionPerformed
+    }//GEN-LAST:event_usernameActionPerformed
 
     private void cancelbtmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelbtmActionPerformed
-        userfield2.setText("");
-        emailfield.setText("");
-        phonenumfield.setText("");
-        passfield2.setText("");
-        cpassfield.setText("");
-        ffield.setText("");
-        lfield.setText("");
+        loginform lf = new loginform();
+            lf.setVisible(true);
+            this.dispose();
     }//GEN-LAST:event_cancelbtmActionPerformed
 
     private void registerbtm4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerbtm4ActionPerformed
                                            
-    String username = userfield2.getText();
-    String email = emailfield.getText();
-    String phoneNumber = phonenumfield.getText();
-    String password = passfield2.getText();
-    String confirmPassword = cpassfield.getText();
-    String firstName = ffield.getText(); // Get first name
-    String lastName = lfield.getText();   // Get last name
-
-
-if (username.isEmpty() || email.isEmpty() || phoneNumber.isEmpty() || password.isEmpty() || confirmPassword.isEmpty() || firstName.isEmpty() || lastName.isEmpty()) {
-    JOptionPane.showMessageDialog(this, "All fields are required.", "Error", JOptionPane.ERROR_MESSAGE);
-    return;
-}
-
-if (!password.equals(confirmPassword)) {
-    JOptionPane.showMessageDialog(this, "Passwords do not match.", "Error", JOptionPane.ERROR_MESSAGE);
-    return;
-}
-
-if (!email.matches("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$")) {
-    JOptionPane.showMessageDialog(this, "Invalid email format.", "Error", JOptionPane.ERROR_MESSAGE);
-    return;
-}
-
-// Basic name validation (can be improved)
-if (!firstName.matches("^[a-zA-Z]+$")) {  // Only letters allowed
-    JOptionPane.showMessageDialog(this, "Invalid first name format (letters only).", "Error", JOptionPane.ERROR_MESSAGE);
-    return;
-}
-
-if (!lastName.matches("^[a-zA-Z]+$")) { // Only letters allowed
-    JOptionPane.showMessageDialog(this, "Invalid last name format (letters only).", "Error", JOptionPane.ERROR_MESSAGE);
-    return;
-}
-
     
     }//GEN-LAST:event_registerbtm4ActionPerformed
 
@@ -272,13 +255,54 @@ if (!lastName.matches("^[a-zA-Z]+$")) { // Only letters allowed
             cancelbtm.setBackground(white);
     }//GEN-LAST:event_cancelbtmMouseExited
 
-    private void ffieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ffieldActionPerformed
+    private void fnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fnameActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_ffieldActionPerformed
+    }//GEN-LAST:event_fnameActionPerformed
 
-    private void lfieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lfieldActionPerformed
+    private void lastnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lastnameActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_lfieldActionPerformed
+    }//GEN-LAST:event_lastnameActionPerformed
+
+    private void registerbtm4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registerbtm4MouseClicked
+     
+        dbconn db = new dbconn();
+      
+        if(username.getText().isEmpty() || fname.getText().isEmpty() || lastname.getText().isEmpty() || email.getText().isEmpty() || ph.getText().isEmpty() 
+                || pass.getText().isEmpty() || cpass.getText().isEmpty()){
+               JOptionPane.showMessageDialog(null, "All fields required");
+               
+        }else if(!isEmailValid(email.getText())){
+            JOptionPane.showMessageDialog(null, "Invalid email format");
+        }else if(!ph.getText().matches("\\d+")){
+            JOptionPane.showMessageDialog(null, "Contact number must only contains digit");
+        }else if(ph.getText().length() > 11){
+            JOptionPane.showMessageDialog(null, "Contact number exceeded");
+        }else if(pass.getText().length() < 8){
+            JOptionPane.showMessageDialog(null, "Password must be at least 8 characters long");
+        }else if(!pass.getText().equals(cpass.getText())){
+            JOptionPane.showMessageDialog(null, "Password not Matches");
+        }else if (db.insertData("INSERT INTO tbl_users (f_name, last_name, username, email, phone_number, pass, cpass, status_1) "
+                + "VALUES ('"+fname.getText()+"', '"+lastname.getText()+"', '"+username.getText()+"', '"+email.getText()+"', "
+                        + "'"+ph.getText()+"', '"+pass.getText()+"', "
+                                + "'"+cpass.getText()+"', 'Pending')") == 1){
+            JOptionPane.showMessageDialog(null, "Submitted Successfully");
+             loginform lf = new loginform();
+            lf.setVisible(true);
+            this.dispose();
+        }
+        
+        
+    }//GEN-LAST:event_registerbtm4MouseClicked
+
+    private void passActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_passActionPerformed
+
+    private void cancelbtmMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancelbtmMouseClicked
+        loginform lf = new loginform();
+            lf.setVisible(true);
+            this.dispose();
+    }//GEN-LAST:event_cancelbtmMouseClicked
 
     /**
      * @param args the command line arguments
@@ -319,22 +343,22 @@ if (!lastName.matches("^[a-zA-Z]+$")) { // Only letters allowed
     private javax.swing.JLabel Fname;
     private javax.swing.JPanel backg3;
     private javax.swing.JButton cancelbtm;
-    private javax.swing.JPasswordField cpassfield;
+    private javax.swing.JPasswordField cpass;
     private javax.swing.JLabel cpasstxt;
-    private javax.swing.JTextField emailfield;
+    private javax.swing.JTextField email;
     private javax.swing.JLabel emailtxt;
-    private javax.swing.JTextField ffield;
+    private javax.swing.JTextField fname;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JTextField lfield;
+    private javax.swing.JTextField lastname;
     private javax.swing.JLabel lname;
-    private javax.swing.JPasswordField passfield2;
+    private javax.swing.JPasswordField pass;
     private javax.swing.JLabel passtxt;
-    private javax.swing.JTextField phonenumfield;
+    private javax.swing.JTextField ph;
     private javax.swing.JLabel phonenumtxt;
     private javax.swing.JButton registerbtm4;
     private javax.swing.JLabel title2;
-    private javax.swing.JTextField userfield2;
+    private javax.swing.JTextField username;
     private javax.swing.JLabel usertxt2;
     // End of variables declaration//GEN-END:variables
 }

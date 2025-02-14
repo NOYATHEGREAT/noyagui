@@ -104,6 +104,9 @@ public class loginform extends javax.swing.JFrame {
         createbtm.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         createbtm.setText("CREATE ACCOUNT");
         createbtm.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                createbtmMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 createbtmMouseEntered(evt);
             }
@@ -142,6 +145,7 @@ public class loginform extends javax.swing.JFrame {
         getContentPane().add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 860, 610));
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void userfield1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userfield1ActionPerformed
@@ -196,6 +200,12 @@ public class loginform extends javax.swing.JFrame {
         return;
     }         
     }//GEN-LAST:event_loginbtm1ActionPerformed
+
+    private void createbtmMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_createbtmMouseClicked
+        registrationform rf = new registrationform();
+        rf.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_createbtmMouseClicked
 
     /**
      * @param args the command line arguments
