@@ -33,7 +33,6 @@ public class registrationform extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
-        title2 = new javax.swing.JLabel();
         usertxt2 = new javax.swing.JLabel();
         emailtxt = new javax.swing.JLabel();
         email = new javax.swing.JTextField();
@@ -51,6 +50,7 @@ public class registrationform extends javax.swing.JFrame {
         fname = new javax.swing.JTextField();
         Fname = new javax.swing.JLabel();
         username = new javax.swing.JTextField();
+        title2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(860, 610));
@@ -60,10 +60,6 @@ public class registrationform extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(255, 204, 102));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        title2.setFont(new java.awt.Font("Arial", 1, 30)); // NOI18N
-        title2.setText("REGISTRATION FORM");
-        jPanel2.add(title2, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 100, 350, 60));
 
         usertxt2.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         usertxt2.setText("USERNAME");
@@ -120,7 +116,7 @@ public class registrationform extends javax.swing.JFrame {
         cpass.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
         jPanel2.add(cpass, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 620, 280, 40));
 
-        backg3.setBackground(new java.awt.Color(255, 204, 153));
+        backg3.setBackground(new java.awt.Color(255, 102, 0));
         backg3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         registerbtm4.setBackground(new java.awt.Color(255, 255, 255));
@@ -203,9 +199,13 @@ public class registrationform extends javax.swing.JFrame {
         });
         backg3.add(username, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 240, 280, 40));
 
-        jPanel2.add(backg3, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 110, 450, 680));
+        title2.setFont(new java.awt.Font("Arial", 1, 30)); // NOI18N
+        title2.setText("REGISTRATION FORM");
+        backg3.add(title2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 0, 350, 60));
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, -20, 1070, 950));
+        jPanel2.add(backg3, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 100, 450, 680));
+
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, 1070, 950));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-90, -80, 960, 850));
 

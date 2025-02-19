@@ -27,6 +27,7 @@ public class loginform extends javax.swing.JFrame {
         exitbtm = new javax.swing.JButton();
         createbtm = new javax.swing.JButton();
         loginbtm1 = new javax.swing.JButton();
+        bgorange = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -46,7 +47,7 @@ public class loginform extends javax.swing.JFrame {
         bodycolor.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         title1.setFont(new java.awt.Font("Arial", 1, 30)); // NOI18N
-        title1.setText("BILLS PAYMENT SYSTEM");
+        title1.setText("             BAYAD TA!");
         bodycolor.add(title1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, 380, 60));
 
         header.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
@@ -139,6 +140,10 @@ public class loginform extends javax.swing.JFrame {
             }
         });
         bodycolor.add(loginbtm1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 400, 140, 40));
+
+        bgorange.setBackground(new java.awt.Color(255, 102, 0));
+        bgorange.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        bodycolor.add(bgorange, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, 390, 560));
 
         jPanel4.add(bodycolor, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 0, 440, 610));
 
@@ -243,6 +248,7 @@ public class loginform extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel bgorange;
     private javax.swing.JPanel bodycolor;
     private javax.swing.JButton createbtm;
     private javax.swing.JButton exitbtm;

@@ -23,7 +23,14 @@ public class Adminpanel extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
-        add = new javax.swing.JPanel();
+        addp = new javax.swing.JPanel();
+        jLabel6 = new javax.swing.JLabel();
+        editp = new javax.swing.JPanel();
+        jLabel7 = new javax.swing.JLabel();
+        refp = new javax.swing.JPanel();
+        jLabel8 = new javax.swing.JLabel();
+        delp = new javax.swing.JPanel();
+        jLabel5 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -32,25 +39,53 @@ public class Adminpanel extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(255, 204, 102));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel4.setBackground(new java.awt.Color(252, 195, 138));
+        jPanel4.setBackground(new java.awt.Color(255, 102, 0));
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        add.setBackground(new java.awt.Color(252, 195, 138));
-        add.addMouseListener(new java.awt.event.MouseAdapter() {
+        addp.setBackground(new java.awt.Color(255, 102, 0));
+        addp.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                addMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                addMouseExited(evt);
+                addpMouseEntered(evt);
             }
         });
-        add.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        addp.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel6.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        jLabel6.setText("           ADD");
+        addp.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 160, 20));
+
+        jPanel4.add(addp, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 140, 160, 60));
+
+        editp.setBackground(new java.awt.Color(255, 102, 0));
+        editp.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel7.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        jLabel7.setText("           EDIT");
+        editp.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 160, -1));
+
+        jPanel4.add(editp, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 220, 160, 60));
+
+        refp.setBackground(new java.awt.Color(255, 102, 0));
+        refp.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel8.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        jLabel8.setText("       REFRESH");
+        refp.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 160, -1));
+
+        jPanel4.add(refp, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 380, 160, 60));
+
+        delp.setBackground(new java.awt.Color(255, 102, 0));
+        delp.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel5.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        jLabel5.setText("        DELETE");
+        delp.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 160, -1));
+
+        jPanel4.add(delp, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 300, 160, 60));
 
         jLabel1.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        jLabel1.setText("ADD");
-        add.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 12, -1, 30));
-
-        jPanel4.add(add, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 160, 50));
+        jLabel1.setText("USER TABLE");
+        jPanel4.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 130, 30));
 
         jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 160, 520));
 
@@ -59,13 +94,9 @@ public class Adminpanel extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void addMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addMouseEntered
-        add.setBackground(lightorange);
-    }//GEN-LAST:event_addMouseEntered
-
-    private void addMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addMouseExited
-        add.setBackground(orange);
-    }//GEN-LAST:event_addMouseExited
+    private void addpMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addpMouseEntered
+     addp.setBackground(orange);        
+    }//GEN-LAST:event_addpMouseEntered
 
     /**
      * @param args the command line arguments
@@ -103,9 +134,16 @@ public class Adminpanel extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel add;
+    private javax.swing.JPanel addp;
+    private javax.swing.JPanel delp;
+    private javax.swing.JPanel editp;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel refp;
     // End of variables declaration//GEN-END:variables
 }
