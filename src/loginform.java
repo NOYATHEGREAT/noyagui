@@ -19,7 +19,6 @@ public class loginform extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         bodycolor = new javax.swing.JPanel();
         title1 = new javax.swing.JLabel();
-        header = new javax.swing.JLabel();
         usertxt1 = new javax.swing.JLabel();
         userfield1 = new javax.swing.JTextField();
         passtxt1 = new javax.swing.JLabel();
@@ -28,6 +27,7 @@ public class loginform extends javax.swing.JFrame {
         createbtm = new javax.swing.JButton();
         loginbtm1 = new javax.swing.JButton();
         bgorange = new javax.swing.JPanel();
+        header = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -46,13 +46,9 @@ public class loginform extends javax.swing.JFrame {
         bodycolor.setForeground(new java.awt.Color(255, 204, 102));
         bodycolor.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        title1.setFont(new java.awt.Font("Arial", 1, 30)); // NOI18N
-        title1.setText("             BAYAD TA!");
-        bodycolor.add(title1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, 380, 60));
-
-        header.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        header.setText("PAY YOUR BILLS ON TIME!");
-        bodycolor.add(header, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 160, 260, -1));
+        title1.setFont(new java.awt.Font("Arial Black", 1, 30)); // NOI18N
+        title1.setText("         BAYAD TA!");
+        bodycolor.add(title1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, 390, 60));
 
         usertxt1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         usertxt1.setText("USERNAME");
@@ -143,6 +139,11 @@ public class loginform extends javax.swing.JFrame {
 
         bgorange.setBackground(new java.awt.Color(255, 102, 0));
         bgorange.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        header.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        header.setText("PAY SMARTER NOT HARDER!");
+        bgorange.add(header, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 130, 270, -1));
+
         bodycolor.add(bgorange, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, 390, 560));
 
         jPanel4.add(bodycolor, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 0, 440, 610));
