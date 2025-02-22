@@ -47,7 +47,7 @@ public class loginform extends javax.swing.JFrame {
         bodycolor.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         title1.setFont(new java.awt.Font("Arial Black", 1, 30)); // NOI18N
-        title1.setText("         BAYAD TA!");
+        title1.setText("        BAYAD TA!");
         bodycolor.add(title1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, 390, 60));
 
         usertxt1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
@@ -142,7 +142,7 @@ public class loginform extends javax.swing.JFrame {
 
         header.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         header.setText("PAY SMARTER NOT HARDER!");
-        bgorange.add(header, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 130, 270, -1));
+        bgorange.add(header, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 130, 280, -1));
 
         bodycolor.add(bgorange, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, 390, 560));
 
