@@ -1,5 +1,8 @@
 import config.dbconn;
 import java.awt.Color;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
@@ -11,6 +14,43 @@ public class registrationform extends javax.swing.JFrame {
     public registrationform() {
         initComponents();
     }
+    public static String email1,username1;
+    
+     public boolean duplicateChecker() {
+    dbconn db = new dbconn();
+    boolean isDuplicate = false;
+
+    try {
+        String query = "SELECT username, email FROM tbl_users WHERE username = ? OR email = ?";
+        PreparedStatement pstmt = db.getConnection().prepareStatement(query);
+        pstmt.setString(1, username.getText());
+        pstmt.setString(2, email.getText());
+        ResultSet resultSet = pstmt.executeQuery();
+
+        while (resultSet.next()) { // Iterate over result set
+            String existingEmail = resultSet.getString("email");
+            String existingUsername = resultSet.getString("username");
+
+            if (existingEmail.equals(email.getText())) {
+                JOptionPane.showMessageDialog(null, "Email is Already Used");
+                email.setText("");
+                isDuplicate = true;
+            }
+            if (existingUsername.equals(username.getText())) {
+                JOptionPane.showMessageDialog(null, "Username is Already Used");
+                username.setText("");
+                isDuplicate = true;
+            }
+        }
+
+        resultSet.close();
+        pstmt.close();
+    } catch (SQLException e) {
+        System.out.println("Error: " + e.getMessage());
+    }
+
+    return isDuplicate;
+}
     private boolean isEmailValid(String email) {
         // More robust regex (but still not perfect for all valid email addresses)
         String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$";
@@ -51,6 +91,8 @@ public class registrationform extends javax.swing.JFrame {
         Fname = new javax.swing.JLabel();
         username = new javax.swing.JTextField();
         title2 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        type = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(860, 610));
@@ -121,7 +163,7 @@ public class registrationform extends javax.swing.JFrame {
 
         registerbtm4.setBackground(new java.awt.Color(255, 255, 255));
         registerbtm4.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        registerbtm4.setText("REGISTER NOW");
+        registerbtm4.setText("REGISTER");
         registerbtm4.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 registerbtm4MouseClicked(evt);
@@ -138,7 +180,7 @@ public class registrationform extends javax.swing.JFrame {
                 registerbtm4ActionPerformed(evt);
             }
         });
-        backg3.add(registerbtm4, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 580, 230, 40));
+        backg3.add(registerbtm4, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 640, 110, 30));
 
         cancelbtm.setBackground(new java.awt.Color(255, 255, 255));
         cancelbtm.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
@@ -159,7 +201,7 @@ public class registrationform extends javax.swing.JFrame {
                 cancelbtmActionPerformed(evt);
             }
         });
-        backg3.add(cancelbtm, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 630, 130, 40));
+        backg3.add(cancelbtm, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 640, 110, 30));
 
         lastname.setBackground(new java.awt.Color(255, 204, 102));
         lastname.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
@@ -202,6 +244,20 @@ public class registrationform extends javax.swing.JFrame {
         title2.setFont(new java.awt.Font("Arial", 1, 30)); // NOI18N
         title2.setText("REGISTRATION FORM");
         backg3.add(title2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 0, 350, 60));
+
+        jLabel1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel1.setText("TYPE");
+        backg3.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 567, 130, 20));
+
+        type.setBackground(new java.awt.Color(255, 204, 102));
+        type.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        type.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "SELECT TYPE OF USER", "Admin", "User" }));
+        type.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                typeActionPerformed(evt);
+            }
+        });
+        backg3.add(type, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 590, 280, 40));
 
         jPanel2.add(backg3, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 100, 450, 680));
 
@@ -270,8 +326,11 @@ public class registrationform extends javax.swing.JFrame {
         if(username.getText().isEmpty() || fname.getText().isEmpty() || lastname.getText().isEmpty() || email.getText().isEmpty() || ph.getText().isEmpty() 
                 || pass.getText().isEmpty() || cpass.getText().isEmpty()){
                JOptionPane.showMessageDialog(null, "All fields required");
+        }else if(duplicateChecker()){
+            System.out.println("Duplicates Existed");
+               }
                
-        }else if(!isEmailValid(email.getText())){
+        else if(!isEmailValid(email.getText())){
             JOptionPane.showMessageDialog(null, "Invalid email format");
         }else if(!ph.getText().matches("\\d+")){
             JOptionPane.showMessageDialog(null, "Contact number must only contains digit");
@@ -281,10 +340,13 @@ public class registrationform extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Password must be at least 8 characters long");
         }else if(!pass.getText().equals(cpass.getText())){
             JOptionPane.showMessageDialog(null, "Password not Matches");
-        }else if (db.insertData("INSERT INTO tbl_users (f_name, last_name, username, email, phone_number, pass, cpass, status_1) "
+        }else if(type.getSelectedIndex() == 0){
+            JOptionPane.showMessageDialog(null, "Please select a type of user");
+        }
+        else if (db.insertData("INSERT INTO tbl_users (f_name, last_name, username, email, phone_number, pass, cpass, status_1, type) "
                 + "VALUES ('"+fname.getText()+"', '"+lastname.getText()+"', '"+username.getText()+"', '"+email.getText()+"', "
                         + "'"+ph.getText()+"', '"+pass.getText()+"', "
-                                + "'"+cpass.getText()+"', 'Pending')") == 1){
+                                + "'"+cpass.getText()+"', 'Pending','"+type.getSelectedItem()+"')") == 1){
             JOptionPane.showMessageDialog(null, "Submitted Successfully");
              loginform lf = new loginform();
             lf.setVisible(true);
@@ -303,6 +365,10 @@ public class registrationform extends javax.swing.JFrame {
             lf.setVisible(true);
             this.dispose();
     }//GEN-LAST:event_cancelbtmMouseClicked
+
+    private void typeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_typeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_typeActionPerformed
 
     /**
      * @param args the command line arguments
@@ -348,6 +414,7 @@ public class registrationform extends javax.swing.JFrame {
     private javax.swing.JTextField email;
     private javax.swing.JLabel emailtxt;
     private javax.swing.JTextField fname;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JTextField lastname;
@@ -358,6 +425,7 @@ public class registrationform extends javax.swing.JFrame {
     private javax.swing.JLabel phonenumtxt;
     private javax.swing.JButton registerbtm4;
     private javax.swing.JLabel title2;
+    private javax.swing.JComboBox<String> type;
     private javax.swing.JTextField username;
     private javax.swing.JLabel usertxt2;
     // End of variables declaration//GEN-END:variables

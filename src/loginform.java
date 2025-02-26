@@ -1,10 +1,39 @@
+import Dashboards.Adminpanel;
+import config.dbconn;
 import java.awt.Color;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import javax.swing.JOptionPane;
+import user.userDashboard;
 public class loginform extends javax.swing.JFrame {
 
   
     public loginform() {
         initComponents();
+    }
+    static String status1;
+    static String type1;
+    
+    public static boolean loginAccount(String username, String password){
+        dbconn db = new dbconn();
+        try{
+            String query = "SELECT * FROM tbl_users WHERE username = '"+ username +"' AND pass = '"+password+"'";
+            ResultSet resultSet = db.getData(query);
+           
+            if(resultSet.next()){
+             
+                status1 = resultSet.getString("status_1");
+                type1 = resultSet.getString("type");
+                 
+                  return true;
+            }else{
+                return false;
+            }
+        }catch(SQLException e){
+           
+            return false;
+        }
+       
     }
     Color orange = new Color(255,204,102);
     Color lightorange = new Color(245,216,127);
@@ -20,14 +49,13 @@ public class loginform extends javax.swing.JFrame {
         bodycolor = new javax.swing.JPanel();
         title1 = new javax.swing.JLabel();
         usertxt1 = new javax.swing.JLabel();
-        userfield1 = new javax.swing.JTextField();
+        username = new javax.swing.JTextField();
         passtxt1 = new javax.swing.JLabel();
-        passfield1 = new javax.swing.JPasswordField();
-        exitbtm = new javax.swing.JButton();
-        createbtm = new javax.swing.JButton();
-        loginbtm1 = new javax.swing.JButton();
+        pass = new javax.swing.JPasswordField();
         bgorange = new javax.swing.JPanel();
         header = new javax.swing.JLabel();
+        loginbtm1 = new javax.swing.JButton();
+        createbtm = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -54,51 +82,61 @@ public class loginform extends javax.swing.JFrame {
         usertxt1.setText("USERNAME");
         bodycolor.add(usertxt1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 240, 80, -1));
 
-        userfield1.setBackground(new java.awt.Color(255, 204, 102));
-        userfield1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        userfield1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
-        userfield1.addActionListener(new java.awt.event.ActionListener() {
+        username.setBackground(new java.awt.Color(255, 204, 102));
+        username.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        username.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
+        username.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                userfield1ActionPerformed(evt);
+                usernameActionPerformed(evt);
             }
         });
-        bodycolor.add(userfield1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 260, 280, 40));
+        bodycolor.add(username, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 260, 280, 40));
 
         passtxt1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         passtxt1.setText("PASSWORD");
         bodycolor.add(passtxt1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 310, 80, -1));
 
-        passfield1.setBackground(new java.awt.Color(255, 204, 102));
-        passfield1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        passfield1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
-        passfield1.addActionListener(new java.awt.event.ActionListener() {
+        pass.setBackground(new java.awt.Color(255, 204, 102));
+        pass.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        pass.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
+        pass.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                passfield1ActionPerformed(evt);
+                passActionPerformed(evt);
             }
         });
-        bodycolor.add(passfield1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 330, 280, 40));
+        bodycolor.add(pass, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 330, 280, 40));
 
-        exitbtm.setBackground(new java.awt.Color(255, 255, 255));
-        exitbtm.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        exitbtm.setText("EXIT");
-        exitbtm.setBorder(null);
-        exitbtm.addMouseListener(new java.awt.event.MouseAdapter() {
+        bgorange.setBackground(new java.awt.Color(255, 102, 0));
+        bgorange.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        header.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        header.setText("PAY SMARTER NOT HARDER!");
+        bgorange.add(header, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 130, 280, -1));
+
+        loginbtm1.setBackground(new java.awt.Color(255, 255, 255));
+        loginbtm1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        loginbtm1.setText("LOGIN");
+        loginbtm1.setBorder(null);
+        loginbtm1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                loginbtm1MouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                exitbtmMouseEntered(evt);
+                loginbtm1MouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                exitbtmMouseExited(evt);
+                loginbtm1MouseExited(evt);
             }
         });
-        exitbtm.addActionListener(new java.awt.event.ActionListener() {
+        loginbtm1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                exitbtmActionPerformed(evt);
+                loginbtm1ActionPerformed(evt);
             }
         });
-        bodycolor.add(exitbtm, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 520, 140, 40));
+        bgorange.add(loginbtm1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 460, 140, 40));
 
         createbtm.setBackground(new java.awt.Color(255, 255, 255));
-        createbtm.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        createbtm.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         createbtm.setText("CREATE ACCOUNT");
         createbtm.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -116,33 +154,7 @@ public class loginform extends javax.swing.JFrame {
                 createbtmActionPerformed(evt);
             }
         });
-        bodycolor.add(createbtm, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 460, 230, 40));
-
-        loginbtm1.setBackground(new java.awt.Color(255, 255, 255));
-        loginbtm1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        loginbtm1.setText("LOGIN");
-        loginbtm1.setBorder(null);
-        loginbtm1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                loginbtm1MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                loginbtm1MouseExited(evt);
-            }
-        });
-        loginbtm1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                loginbtm1ActionPerformed(evt);
-            }
-        });
-        bodycolor.add(loginbtm1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 400, 140, 40));
-
-        bgorange.setBackground(new java.awt.Color(255, 102, 0));
-        bgorange.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        header.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        header.setText("PAY SMARTER NOT HARDER!");
-        bgorange.add(header, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 130, 280, -1));
+        bgorange.add(createbtm, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 520, 220, -1));
 
         bodycolor.add(bgorange, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, 390, 560));
 
@@ -154,27 +166,14 @@ public class loginform extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void userfield1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userfield1ActionPerformed
+    private void usernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usernameActionPerformed
     
-    }//GEN-LAST:event_userfield1ActionPerformed
+    }//GEN-LAST:event_usernameActionPerformed
   
-    private void exitbtmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitbtmActionPerformed
-        System.exit(0);
-                                         
-    
-    
-    }//GEN-LAST:event_exitbtmActionPerformed
-
-    private void exitbtmMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exitbtmMouseExited
-        exitbtm.setBackground(white);
-    }//GEN-LAST:event_exitbtmMouseExited
-
-    private void exitbtmMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exitbtmMouseEntered
-        exitbtm.setBackground(orange);
-    }//GEN-LAST:event_exitbtmMouseEntered
-
     private void createbtmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createbtmActionPerformed
-     new registrationform().setVisible(true);     
+     registrationform rf = new registrationform(); 
+     rf.setVisible(true);
+     this.dispose();
     }//GEN-LAST:event_createbtmActionPerformed
 
     private void createbtmMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_createbtmMouseEntered
@@ -185,9 +184,9 @@ public class loginform extends javax.swing.JFrame {
         createbtm.setBackground(white);
     }//GEN-LAST:event_createbtmMouseExited
 
-    private void passfield1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passfield1ActionPerformed
+    private void passActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_passfield1ActionPerformed
+    }//GEN-LAST:event_passActionPerformed
 
     private void loginbtm1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loginbtm1MouseEntered
         loginbtm1.setBackground(orange);
@@ -198,13 +197,7 @@ public class loginform extends javax.swing.JFrame {
     }//GEN-LAST:event_loginbtm1MouseExited
 
     private void loginbtm1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginbtm1ActionPerformed
-        String username = userfield1.getText();
-    String password = passfield1.getText();
-
-    if (username.isEmpty() || password.isEmpty()) {
-        JOptionPane.showMessageDialog(this, "Username and password are required or or Create account if needed.", "Error", JOptionPane.ERROR_MESSAGE);
-        return;
-    }         
+       
     }//GEN-LAST:event_loginbtm1ActionPerformed
 
     private void createbtmMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_createbtmMouseClicked
@@ -212,6 +205,43 @@ public class loginform extends javax.swing.JFrame {
         rf.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_createbtmMouseClicked
+
+    private void loginbtm1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loginbtm1MouseClicked
+   
+                    if (username.getText().isEmpty() && pass.getText().isEmpty()) {
+                 JOptionPane.showMessageDialog(null, "Please put username and password");
+             } else if (username.getText().isEmpty()) {
+                 JOptionPane.showMessageDialog(null, "Please enter your username.");
+             } else if (pass.getText().isEmpty()) {
+                 JOptionPane.showMessageDialog(null, "Please enter your password.");
+             } else {
+
+
+                 if (loginAccount(username.getText(), pass.getText())) {
+                     System.out.println("Login successful in method!");
+                     if (!status1.equals("Active")) {
+                         JOptionPane.showMessageDialog(null, "Your account is not active, Please wait for a minutes.....");
+                     } else {
+                         JOptionPane.showMessageDialog(null, "Login successful!");
+                         if (type1.equals("Admin")) {
+                             Adminpanel ad = new Adminpanel();
+                             ad.setVisible(true);
+                             this.dispose();
+                         } else if (type1.equals("User")) {
+                             userDashboard ad = new userDashboard();
+                             ad.setVisible(true);
+                             this.dispose();
+                         } else {
+                             JOptionPane.showMessageDialog(null, "No account type found!");
+                         }
+                     }
+                 } else {
+                     JOptionPane.showMessageDialog(null, "Invalid Account, Please Register!", "Login Failed", JOptionPane.ERROR_MESSAGE);
+                 }
+             }
+
+        
+    }//GEN-LAST:event_loginbtm1MouseClicked
 
     /**
      * @param args the command line arguments
@@ -252,16 +282,15 @@ public class loginform extends javax.swing.JFrame {
     private javax.swing.JPanel bgorange;
     private javax.swing.JPanel bodycolor;
     private javax.swing.JButton createbtm;
-    private javax.swing.JButton exitbtm;
     private javax.swing.JLabel header;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JButton loginbtm1;
-    private javax.swing.JPasswordField passfield1;
+    private javax.swing.JPasswordField pass;
     private javax.swing.JLabel passtxt1;
     private javax.swing.JLabel title1;
-    private javax.swing.JTextField userfield1;
+    private javax.swing.JTextField username;
     private javax.swing.JLabel usertxt1;
     // End of variables declaration//GEN-END:variables
 }

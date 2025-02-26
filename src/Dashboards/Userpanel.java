@@ -5,19 +5,34 @@
  */
 package Dashboards;
 
+import config.dbconn;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import net.proteanit.sql.DbUtils;
+
 /**
  *
  * @author SCC-COLLEGE
  */
 public class Userpanel extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Userpanel
-     */
+    
     public Userpanel() {
         initComponents();
+        displayUsers();
     }
+  public void displayUsers(){
+       
+        try{
+            dbconn db = new dbconn();
+        ResultSet rs = db.getData("SELECT * FROM tbl_users");
+        tbl_users.setModel(DbUtils.resultSetToTableModel(rs));
+        rs.close();
+        }catch(SQLException e){
+            System.out.println("Erros: "+e.getMessage());
+        }
 
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -41,7 +56,7 @@ public class Userpanel extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tbl_users = new javax.swing.JTable();
         jPanel2 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -106,7 +121,7 @@ public class Userpanel extends javax.swing.JFrame {
 
         jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 170, 580));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tbl_users.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {},
                 {},
@@ -117,7 +132,7 @@ public class Userpanel extends javax.swing.JFrame {
 
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tbl_users);
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 130, 680, 460));
 
@@ -184,7 +199,7 @@ public class Userpanel extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JPanel refp;
+    private javax.swing.JTable tbl_users;
     // End of variables declaration//GEN-END:variables
 }

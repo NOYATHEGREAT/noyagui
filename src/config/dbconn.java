@@ -8,7 +8,9 @@ package config;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 
 public class dbconn {
@@ -38,7 +40,18 @@ public class dbconn {
             }
             return result;
         }
-    
-    }
-    
+       public Connection getConnection(){
+       return connect;
+       
+       }
+       
+
+   
+        public ResultSet getData(String sql) throws SQLException{
+            Statement stmt = connect.createStatement();
+            ResultSet rst = stmt.executeQuery(sql);
+            return rst;
+        }
+
+       }
 
