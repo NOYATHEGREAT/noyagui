@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 14, 2025 at 01:48 PM
+-- Generation Time: Feb 28, 2025 at 03:38 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -36,15 +36,17 @@ CREATE TABLE `tbl_users` (
   `phone_number` varchar(50) NOT NULL,
   `pass` varchar(50) NOT NULL,
   `cpass` varchar(50) NOT NULL,
-  `status_1` varchar(100) NOT NULL
+  `status_1` varchar(100) NOT NULL,
+  `type` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `tbl_users`
 --
 
-INSERT INTO `tbl_users` (`u_id`, `f_name`, `last_name`, `username`, `email`, `phone_number`, `pass`, `cpass`, `status_1`) VALUES
-(1, 'jay', 'cabatuan', 'jayjay123', 'allenjay@gmail.com', '09090909091', 'password1', 'password1', 'Pending');
+INSERT INTO `tbl_users` (`u_id`, `f_name`, `last_name`, `username`, `email`, `phone_number`, `pass`, `cpass`, `status_1`, `type`) VALUES
+(2, 'john lloyd', 'noya', 'noya09', 'noya@gmail.com', '12345678910', '09357496285123', '09357496285123', 'Active', 'User'),
+(3, 'john lloyd', 'noya', 'admin', 'admin@gmail.com', '12345648971', 'admin123456', 'admin123456', 'Active', 'Admin');
 
 --
 -- Indexes for dumped tables
@@ -64,7 +66,7 @@ ALTER TABLE `tbl_users`
 -- AUTO_INCREMENT for table `tbl_users`
 --
 ALTER TABLE `tbl_users`
-  MODIFY `u_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `u_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

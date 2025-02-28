@@ -133,7 +133,7 @@ public class loginform extends javax.swing.JFrame {
                 loginbtm1ActionPerformed(evt);
             }
         });
-        bgorange.add(loginbtm1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 460, 140, 40));
+        bgorange.add(loginbtm1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 420, 140, 40));
 
         createbtm.setBackground(new java.awt.Color(255, 255, 255));
         createbtm.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
@@ -154,7 +154,7 @@ public class loginform extends javax.swing.JFrame {
                 createbtmActionPerformed(evt);
             }
         });
-        bgorange.add(createbtm, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 520, 220, -1));
+        bgorange.add(createbtm, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 480, 230, 40));
 
         bodycolor.add(bgorange, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, 390, 560));
 

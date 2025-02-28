@@ -10,7 +10,7 @@ public class Adminpanel extends javax.swing.JFrame {
         initComponents();
     }
     Color orange = new Color(255,102,0);
-    Color lightorange = new Color(245,216,127);
+    Color lightorange = new Color(255,204,102);
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -29,9 +29,7 @@ public class Adminpanel extends javax.swing.JFrame {
         jPanel5 = new javax.swing.JPanel();
         jLabel17 = new javax.swing.JLabel();
         userbtm = new javax.swing.JPanel();
-        jLabel18 = new javax.swing.JLabel();
-        jPanel7 = new javax.swing.JPanel();
-        jLabel16 = new javax.swing.JLabel();
+        usertxt = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -86,25 +84,23 @@ public class Adminpanel extends javax.swing.JFrame {
         });
         userbtm.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel18.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
-        jLabel18.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel18.setText("USER");
-        jLabel18.addMouseListener(new java.awt.event.MouseAdapter() {
+        usertxt.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
+        usertxt.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        usertxt.setText("USER");
+        usertxt.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel18MouseClicked(evt);
+                usertxtMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                usertxtMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                usertxtMouseExited(evt);
             }
         });
-        userbtm.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 170, -1));
+        userbtm.add(usertxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 170, -1));
 
         jPanel4.add(userbtm, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 230, 170, 60));
-
-        jPanel7.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel16.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
-        jLabel16.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jPanel7.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 170, -1));
-
-        jPanel4.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 310, 170, 60));
 
         jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 170, 560));
 
@@ -172,11 +168,19 @@ public class Adminpanel extends javax.swing.JFrame {
         userbtm.setBackground(orange);
     }//GEN-LAST:event_userbtmMouseExited
 
-    private void jLabel18MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel18MouseClicked
+    private void usertxtMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_usertxtMouseClicked
    Userpanel up  = new Userpanel();
    up.setVisible(true);
    this.dispose();
-    }//GEN-LAST:event_jLabel18MouseClicked
+    }//GEN-LAST:event_usertxtMouseClicked
+
+    private void usertxtMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_usertxtMouseEntered
+        usertxt.setBackground(lightorange);
+    }//GEN-LAST:event_usertxtMouseEntered
+
+    private void usertxtMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_usertxtMouseExited
+        usertxt.setBackground(orange);
+    }//GEN-LAST:event_usertxtMouseExited
 
     /**
      * @param args the command line arguments
@@ -221,9 +225,7 @@ public class Adminpanel extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
-    private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -237,7 +239,7 @@ public class Adminpanel extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
-    private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel userbtm;
+    private javax.swing.JLabel usertxt;
     // End of variables declaration//GEN-END:variables
 }

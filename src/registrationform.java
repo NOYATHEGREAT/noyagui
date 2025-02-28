@@ -73,15 +73,6 @@ public class registrationform extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
-        usertxt2 = new javax.swing.JLabel();
-        emailtxt = new javax.swing.JLabel();
-        email = new javax.swing.JTextField();
-        phonenumtxt = new javax.swing.JLabel();
-        ph = new javax.swing.JTextField();
-        passtxt = new javax.swing.JLabel();
-        pass = new javax.swing.JPasswordField();
-        cpasstxt = new javax.swing.JLabel();
-        cpass = new javax.swing.JPasswordField();
         backg3 = new javax.swing.JPanel();
         registerbtm4 = new javax.swing.JButton();
         cancelbtm = new javax.swing.JButton();
@@ -93,6 +84,15 @@ public class registrationform extends javax.swing.JFrame {
         title2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         type = new javax.swing.JComboBox<>();
+        usertxt2 = new javax.swing.JLabel();
+        emailtxt = new javax.swing.JLabel();
+        email = new javax.swing.JTextField();
+        phonenumtxt = new javax.swing.JLabel();
+        ph = new javax.swing.JTextField();
+        passtxt = new javax.swing.JLabel();
+        pass = new javax.swing.JPasswordField();
+        cpasstxt = new javax.swing.JLabel();
+        cpass = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(860, 610));
@@ -102,61 +102,6 @@ public class registrationform extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(255, 204, 102));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        usertxt2.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        usertxt2.setText("USERNAME");
-        jPanel2.add(usertxt2, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 320, 80, -1));
-
-        emailtxt.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        emailtxt.setText("EMAIL");
-        jPanel2.add(emailtxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 390, 80, -1));
-
-        email.setBackground(new java.awt.Color(255, 204, 102));
-        email.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        email.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
-        email.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                emailActionPerformed(evt);
-            }
-        });
-        jPanel2.add(email, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 410, 280, 40));
-
-        phonenumtxt.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        phonenumtxt.setText("PHONE NUMBER");
-        jPanel2.add(phonenumtxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 460, 120, -1));
-
-        ph.setBackground(new java.awt.Color(255, 204, 102));
-        ph.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        ph.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
-        ph.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                phActionPerformed(evt);
-            }
-        });
-        jPanel2.add(ph, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 480, 280, 40));
-
-        passtxt.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        passtxt.setText("PASSWORD");
-        jPanel2.add(passtxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 530, 80, -1));
-
-        pass.setBackground(new java.awt.Color(255, 204, 102));
-        pass.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        pass.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
-        pass.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                passActionPerformed(evt);
-            }
-        });
-        jPanel2.add(pass, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 550, 280, 40));
-
-        cpasstxt.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        cpasstxt.setText("CONFIRM PASSWORD");
-        jPanel2.add(cpasstxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 600, 160, -1));
-
-        cpass.setBackground(new java.awt.Color(255, 204, 102));
-        cpass.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        cpass.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
-        jPanel2.add(cpass, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 620, 280, 40));
 
         backg3.setBackground(new java.awt.Color(255, 102, 0));
         backg3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -180,7 +125,7 @@ public class registrationform extends javax.swing.JFrame {
                 registerbtm4ActionPerformed(evt);
             }
         });
-        backg3.add(registerbtm4, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 640, 110, 30));
+        backg3.add(registerbtm4, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 650, 120, 40));
 
         cancelbtm.setBackground(new java.awt.Color(255, 255, 255));
         cancelbtm.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
@@ -201,7 +146,7 @@ public class registrationform extends javax.swing.JFrame {
                 cancelbtmActionPerformed(evt);
             }
         });
-        backg3.add(cancelbtm, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 640, 110, 30));
+        backg3.add(cancelbtm, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 650, 130, 40));
 
         lastname.setBackground(new java.awt.Color(255, 204, 102));
         lastname.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
@@ -252,6 +197,7 @@ public class registrationform extends javax.swing.JFrame {
         type.setBackground(new java.awt.Color(255, 204, 102));
         type.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         type.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "SELECT TYPE OF USER", "Admin", "User" }));
+        type.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
         type.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 typeActionPerformed(evt);
@@ -259,7 +205,62 @@ public class registrationform extends javax.swing.JFrame {
         });
         backg3.add(type, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 590, 280, 40));
 
-        jPanel2.add(backg3, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 100, 450, 680));
+        usertxt2.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        usertxt2.setText("USERNAME");
+        backg3.add(usertxt2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 220, 80, -1));
+
+        emailtxt.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        emailtxt.setText("EMAIL");
+        backg3.add(emailtxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 290, 80, -1));
+
+        email.setBackground(new java.awt.Color(255, 204, 102));
+        email.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        email.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
+        email.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                emailActionPerformed(evt);
+            }
+        });
+        backg3.add(email, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 310, 280, 40));
+
+        phonenumtxt.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        phonenumtxt.setText("PHONE NUMBER");
+        backg3.add(phonenumtxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 360, 120, -1));
+
+        ph.setBackground(new java.awt.Color(255, 204, 102));
+        ph.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        ph.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
+        ph.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                phActionPerformed(evt);
+            }
+        });
+        backg3.add(ph, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 380, 280, 40));
+
+        passtxt.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        passtxt.setText("PASSWORD");
+        backg3.add(passtxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 430, -1, -1));
+
+        pass.setBackground(new java.awt.Color(255, 204, 102));
+        pass.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        pass.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
+        pass.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                passActionPerformed(evt);
+            }
+        });
+        backg3.add(pass, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 450, 280, 40));
+
+        cpasstxt.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        cpasstxt.setText("CONFIRM PASSWORD");
+        backg3.add(cpasstxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 500, 160, -1));
+
+        cpass.setBackground(new java.awt.Color(255, 204, 102));
+        cpass.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        cpass.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
+        backg3.add(cpass, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 520, 280, 40));
+
+        jPanel2.add(backg3, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 70, 450, 730));
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, 1070, 950));
 
