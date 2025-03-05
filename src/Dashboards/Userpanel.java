@@ -9,6 +9,9 @@ import config.dbconn;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import net.proteanit.sql.DbUtils;
+import java.awt.Color;
+import javax.swing.JOptionPane;
+
 
 /**
  *
@@ -21,6 +24,8 @@ public class Userpanel extends javax.swing.JFrame {
         initComponents();
         displayUsers();
     }
+     Color orange = new Color(255,102,0);
+     Color lightorange = new Color(255,204,102);
   public void displayUsers(){
        
         try{
@@ -45,11 +50,11 @@ public class Userpanel extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         addp = new javax.swing.JPanel();
-        jLabel6 = new javax.swing.JLabel();
-        editp = new javax.swing.JPanel();
-        jLabel7 = new javax.swing.JLabel();
-        refp = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
+        editp = new javax.swing.JPanel();
+        jLabel9 = new javax.swing.JLabel();
+        refp = new javax.swing.JPanel();
+        jLabel7 = new javax.swing.JLabel();
         delp = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -58,6 +63,8 @@ public class Userpanel extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tbl_users = new javax.swing.JTable();
         jPanel2 = new javax.swing.JPanel();
+        logpanel = new javax.swing.JPanel();
+        logtxt = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -76,38 +83,38 @@ public class Userpanel extends javax.swing.JFrame {
         });
         addp.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel6.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        jLabel6.setText("             ADD");
-        addp.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 160, 20));
+        jLabel8.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
+        jLabel8.setText("         ADD");
+        addp.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 170, 20));
 
         jPanel4.add(addp, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 150, 160, 60));
 
         editp.setBackground(new java.awt.Color(255, 102, 0));
         editp.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel7.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        jLabel7.setText("            EDIT");
-        editp.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 160, -1));
+        jLabel9.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
+        jLabel9.setText("         EDIT");
+        editp.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 170, 20));
 
-        jPanel4.add(editp, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 220, 160, 60));
+        jPanel4.add(editp, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 220, 170, 60));
 
         refp.setBackground(new java.awt.Color(255, 102, 0));
         refp.setLayout(new java.awt.BorderLayout());
 
-        jLabel8.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        jLabel8.setText("        REFRESH");
-        refp.add(jLabel8, java.awt.BorderLayout.CENTER);
+        jLabel7.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
+        jLabel7.setText("      REFRESH");
+        refp.add(jLabel7, java.awt.BorderLayout.CENTER);
 
-        jPanel4.add(refp, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 380, 160, 60));
+        jPanel4.add(refp, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 370, 170, 60));
 
         delp.setBackground(new java.awt.Color(255, 102, 0));
         delp.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel5.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        jLabel5.setText("          DELETE");
+        jLabel5.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
+        jLabel5.setText("       DELETE");
         delp.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 170, -1));
 
-        jPanel4.add(delp, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 300, 160, 60));
+        jPanel4.add(delp, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 290, 170, 60));
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8-user-50 (1).png"))); // NOI18N
         jPanel4.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 50, 50, -1));
@@ -139,6 +146,32 @@ public class Userpanel extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(255, 102, 0));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        logpanel.setBackground(new java.awt.Color(255, 102, 0));
+        logpanel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                logpanelMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                logpanelMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                logpanelMouseExited(evt);
+            }
+        });
+        logpanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        logtxt.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
+        logtxt.setText("    LOGOUT");
+        logtxt.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                logtxtMouseClicked(evt);
+            }
+        });
+        logpanel.add(logtxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 140, 20));
+
+        jPanel2.add(logpanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 10, 140, 40));
+
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 10, 680, 110));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 880, 600));
@@ -149,6 +182,30 @@ public class Userpanel extends javax.swing.JFrame {
     private void addpMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addpMouseEntered
        
     }//GEN-LAST:event_addpMouseEntered
+
+    private void logpanelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logpanelMouseEntered
+    logpanel.setBackground(lightorange);        
+    }//GEN-LAST:event_logpanelMouseEntered
+
+    private void logpanelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logpanelMouseExited
+    logpanel.setBackground(orange);
+    }//GEN-LAST:event_logpanelMouseExited
+
+    private void logtxtMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logtxtMouseClicked
+     int choice = JOptionPane.showConfirmDialog(null, "Do you want to log out?", "Logout Confirmation!",
+            JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+
+        if (choice == JOptionPane.YES_OPTION) {
+
+            loginform cf = new loginform();
+            cf.setVisible(true);
+            this.dispose();
+        }        
+    }//GEN-LAST:event_logtxtMouseClicked
+
+    private void logpanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logpanelMouseClicked
+        
+    }//GEN-LAST:event_logpanelMouseClicked
 
     /**
      * @param args the command line arguments
@@ -193,13 +250,15 @@ public class Userpanel extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JPanel logpanel;
+    private javax.swing.JLabel logtxt;
     private javax.swing.JPanel refp;
     private javax.swing.JTable tbl_users;
     // End of variables declaration//GEN-END:variables

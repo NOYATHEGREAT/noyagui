@@ -30,19 +30,18 @@ public class Adminpanel extends javax.swing.JFrame {
         jLabel17 = new javax.swing.JLabel();
         userbtm = new javax.swing.JPanel();
         usertxt = new javax.swing.JLabel();
+        userbtm1 = new javax.swing.JPanel();
+        usertxt1 = new javax.swing.JLabel();
+        jPanel6 = new javax.swing.JPanel();
+        usertxt3 = new javax.swing.JLabel();
+        jPanel7 = new javax.swing.JPanel();
+        usertxt4 = new javax.swing.JLabel();
+        jPanel8 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
-        jLabel13 = new javax.swing.JLabel();
-        jLabel14 = new javax.swing.JLabel();
-        jLabel15 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -102,6 +101,81 @@ public class Adminpanel extends javax.swing.JFrame {
 
         jPanel4.add(userbtm, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 230, 170, 60));
 
+        userbtm1.setBackground(new java.awt.Color(255, 102, 0));
+        userbtm1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                userbtm1MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                userbtm1MouseExited(evt);
+            }
+        });
+        userbtm1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        usertxt1.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
+        usertxt1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        usertxt1.setText("USER");
+        usertxt1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                usertxt1MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                usertxt1MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                usertxt1MouseExited(evt);
+            }
+        });
+        userbtm1.add(usertxt1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 170, -1));
+
+        jPanel4.add(userbtm1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 230, 170, 60));
+
+        jPanel6.setBackground(new java.awt.Color(255, 102, 0));
+        jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        usertxt3.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
+        usertxt3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        usertxt3.setText("TRANSACTION");
+        usertxt3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                usertxt3MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                usertxt3MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                usertxt3MouseExited(evt);
+            }
+        });
+        jPanel6.add(usertxt3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 170, -1));
+
+        jPanel4.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 310, 170, 60));
+
+        jPanel7.setBackground(new java.awt.Color(255, 102, 0));
+        jPanel7.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        usertxt4.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
+        usertxt4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        usertxt4.setText("SETTINGS");
+        usertxt4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                usertxt4MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                usertxt4MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                usertxt4MouseExited(evt);
+            }
+        });
+        jPanel7.add(usertxt4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 170, -1));
+
+        jPanel4.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 390, 170, 60));
+
+        jPanel8.setBackground(new java.awt.Color(255, 102, 0));
+        jPanel8.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel4.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 470, 170, 60));
+
         jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 170, 560));
 
         jPanel2.setBackground(new java.awt.Color(255, 102, 0));
@@ -109,64 +183,28 @@ public class Adminpanel extends javax.swing.JFrame {
 
         jLabel7.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel7.setText("TRANSACTION");
-        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 160, -1, -1));
+        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 160, -1, -1));
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8-get-revenue-64.png"))); // NOI18N
-        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 90, -1, -1));
-
-        jLabel5.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabel5.setText("LOGOUT");
-        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 320, -1, -1));
-
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8-subscription-64.png"))); // NOI18N
-        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 90, -1, -1));
+        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 90, -1, -1));
 
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8-invoices-60.png"))); // NOI18N
-        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 90, -1, -1));
-
-        jLabel9.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabel9.setText("SUBSCRIPTION");
-        jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 160, -1, -1));
-
-        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8-reports-64.png"))); // NOI18N
-        jPanel2.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 250, -1, -1));
-
-        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8-settings-64.png"))); // NOI18N
-        jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 250, -1, -1));
+        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 90, -1, -1));
 
         jLabel12.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel12.setText("TOTAL REVENUE");
-        jPanel2.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 160, -1, -1));
-
-        jLabel13.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabel13.setText("REPORTS");
-        jPanel2.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 320, -1, -1));
-
-        jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8-logout-64.png"))); // NOI18N
-        jPanel2.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 250, -1, -1));
-
-        jLabel15.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabel15.setText("SETTINGS");
-        jPanel2.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 320, -1, -1));
+        jPanel2.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 160, -1, -1));
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 90, 660, 480));
 
         jPanel3.setBackground(new java.awt.Color(255, 102, 0));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 20, 660, 60));
+        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 10, 660, 70));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 860, 580));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void userbtmMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_userbtmMouseEntered
-         userbtm.setBackground(lightorange);
-    }//GEN-LAST:event_userbtmMouseEntered
-
-    private void userbtmMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_userbtmMouseExited
-        userbtm.setBackground(orange);
-    }//GEN-LAST:event_userbtmMouseExited
 
     private void usertxtMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_usertxtMouseClicked
    Userpanel up  = new Userpanel();
@@ -181,6 +219,58 @@ public class Adminpanel extends javax.swing.JFrame {
     private void usertxtMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_usertxtMouseExited
         usertxt.setBackground(orange);
     }//GEN-LAST:event_usertxtMouseExited
+
+    private void usertxt3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_usertxt3MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_usertxt3MouseClicked
+
+    private void usertxt3MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_usertxt3MouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_usertxt3MouseEntered
+
+    private void usertxt3MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_usertxt3MouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_usertxt3MouseExited
+
+    private void usertxt4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_usertxt4MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_usertxt4MouseClicked
+
+    private void usertxt4MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_usertxt4MouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_usertxt4MouseEntered
+
+    private void usertxt4MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_usertxt4MouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_usertxt4MouseExited
+
+    private void userbtm1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_userbtm1MouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_userbtm1MouseExited
+
+    private void userbtm1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_userbtm1MouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_userbtm1MouseEntered
+
+    private void usertxt1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_usertxt1MouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_usertxt1MouseExited
+
+    private void usertxt1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_usertxt1MouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_usertxt1MouseEntered
+
+    private void usertxt1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_usertxt1MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_usertxt1MouseClicked
+
+    private void userbtmMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_userbtmMouseExited
+        userbtm.setBackground(orange);
+    }//GEN-LAST:event_userbtmMouseExited
+
+    private void userbtmMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_userbtmMouseEntered
+        userbtm.setBackground(lightorange);
+    }//GEN-LAST:event_userbtmMouseEntered
 
     /**
      * @param args the command line arguments
@@ -219,27 +309,26 @@ public class Adminpanel extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel7;
+    private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel userbtm;
+    private javax.swing.JPanel userbtm1;
     private javax.swing.JLabel usertxt;
+    private javax.swing.JLabel usertxt1;
+    private javax.swing.JLabel usertxt3;
+    private javax.swing.JLabel usertxt4;
     // End of variables declaration//GEN-END:variables
 }

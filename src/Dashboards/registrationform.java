@@ -1,3 +1,6 @@
+package Dashboards;
+
+import Dashboards.loginform;
 import config.dbconn;
 import java.awt.Color;
 import java.sql.PreparedStatement;
@@ -258,6 +261,11 @@ public class registrationform extends javax.swing.JFrame {
         cpass.setBackground(new java.awt.Color(255, 204, 102));
         cpass.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         cpass.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
+        cpass.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cpassActionPerformed(evt);
+            }
+        });
         backg3.add(cpass, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 520, 280, 40));
 
         jPanel2.add(backg3, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 70, 450, 730));
@@ -370,6 +378,10 @@ public class registrationform extends javax.swing.JFrame {
     private void typeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_typeActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_typeActionPerformed
+
+    private void cpassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cpassActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cpassActionPerformed
 
     /**
      * @param args the command line arguments

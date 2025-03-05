@@ -1,3 +1,5 @@
+package Dashboards;
+
 import Dashboards.Adminpanel;
 import config.dbconn;
 import java.awt.Color;
@@ -97,7 +99,7 @@ public class loginform extends javax.swing.JFrame {
         bodycolor.add(passtxt1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 310, 80, -1));
 
         pass.setBackground(new java.awt.Color(255, 204, 102));
-        pass.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        pass.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         pass.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
         pass.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
