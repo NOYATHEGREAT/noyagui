@@ -11,6 +11,7 @@ import java.sql.SQLException;
 import net.proteanit.sql.DbUtils;
 import java.awt.Color;
 import javax.swing.JOptionPane;
+import javax.swing.table.TableModel;
 
 
 /**
@@ -54,9 +55,9 @@ public class Userpanel extends javax.swing.JFrame {
         editp = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
         refp = new javax.swing.JPanel();
-        jLabel7 = new javax.swing.JLabel();
+        delete = new javax.swing.JLabel();
         delp = new javax.swing.JPanel();
-        jLabel5 = new javax.swing.JLabel();
+        delete1 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -85,34 +86,54 @@ public class Userpanel extends javax.swing.JFrame {
 
         jLabel8.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
         jLabel8.setText("         ADD");
+        jLabel8.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel8MouseClicked(evt);
+            }
+        });
         addp.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 170, 20));
 
-        jPanel4.add(addp, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 150, 160, 60));
+        jPanel4.add(addp, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 150, 170, 60));
 
         editp.setBackground(new java.awt.Color(255, 102, 0));
         editp.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel9.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
         jLabel9.setText("         EDIT");
+        jLabel9.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel9MouseClicked(evt);
+            }
+        });
         editp.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 170, 20));
 
         jPanel4.add(editp, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 220, 170, 60));
 
         refp.setBackground(new java.awt.Color(255, 102, 0));
-        refp.setLayout(new java.awt.BorderLayout());
+        refp.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel7.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
-        jLabel7.setText("      REFRESH");
-        refp.add(jLabel7, java.awt.BorderLayout.CENTER);
+        delete.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
+        delete.setText("     REFRESH");
+        delete.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                deleteMouseClicked(evt);
+            }
+        });
+        refp.add(delete, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 170, -1));
 
         jPanel4.add(refp, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 370, 170, 60));
 
         delp.setBackground(new java.awt.Color(255, 102, 0));
         delp.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel5.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
-        jLabel5.setText("       DELETE");
-        delp.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 170, -1));
+        delete1.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
+        delete1.setText("       DELETE");
+        delete1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                delete1MouseClicked(evt);
+            }
+        });
+        delp.add(delete1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 170, -1));
 
         jPanel4.add(delp, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 290, 170, 60));
 
@@ -177,6 +198,7 @@ public class Userpanel extends javax.swing.JFrame {
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 880, 600));
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void addpMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addpMouseEntered
@@ -206,6 +228,77 @@ public class Userpanel extends javax.swing.JFrame {
     private void logpanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logpanelMouseClicked
         
     }//GEN-LAST:event_logpanelMouseClicked
+
+    private void jLabel8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseClicked
+      adduser au = new adduser();
+      au.setVisible(true);
+      this.dispose();
+    }//GEN-LAST:event_jLabel8MouseClicked
+
+    private void jLabel9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel9MouseClicked
+    int rowIndex = tbl_users.getSelectedRow();
+     
+     
+      if(rowIndex < 0 ){
+          JOptionPane.showMessageDialog(null, "Please select an item.", "Click a Item", JOptionPane.WARNING_MESSAGE);
+      }else{
+         
+          try{
+          dbconn db = new dbconn();
+          TableModel tbl  = tbl_users.getModel();
+        ResultSet rs = db.getData("SELECT * FROM tbl_users WHERE u_id = '" + tbl.getValueAt(rowIndex, 0) + "'");
+
+          if(rs.next()){
+               edituser uf = new edituser();
+                 uf.u_id.setText(""+rs.getInt("u_id"));
+                uf.username.setText(""+rs.getString("username"));
+              uf.fname.setText(""+rs.getString("f_name"));
+              uf.lastname.setText(""+rs.getString("last_name"));
+               uf.email.setText(""+rs.getString("email"));
+               uf.ph.setText(""+rs.getString("phone_number"));
+               uf.type1.setSelectedItem(""+rs.getString("type"));
+               uf.pass.setText(""+rs.getString("pass"));
+                uf.status.setSelectedItem(""+rs.getString("status_1"));
+               uf.setVisible(true);
+              this.dispose();
+          }
+         }catch(SQLException e){
+                       System.out.println(""+e.getMessage());
+                  }
+      }        
+    }//GEN-LAST:event_jLabel9MouseClicked
+
+    private void deleteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteMouseClicked
+      
+    int response = JOptionPane.showConfirmDialog(this, "Are you sure you want to delete this user?", 
+                                                  "Confirm Deletion", JOptionPane.YES_NO_OPTION);
+    
+    if (response == JOptionPane.YES_OPTION) {
+        
+        boolean isDeleted = deleteUserFromDatabase(); 
+
+        if (isDeleted) {
+            
+            JOptionPane.showMessageDialog(this, "User deleted successfully.");
+            
+            
+        } else {
+            
+            JOptionPane.showMessageDialog(this, "Error deleting user. Please try again.");
+        }
+    }
+}
+
+
+private boolean deleteUserFromDatabase() {
+   
+    return true; 
+
+    }//GEN-LAST:event_deleteMouseClicked
+
+    private void delete1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_delete1MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_delete1MouseClicked
 
     /**
      * @param args the command line arguments
@@ -244,13 +337,13 @@ public class Userpanel extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel addp;
+    private javax.swing.JLabel delete;
+    private javax.swing.JLabel delete1;
     private javax.swing.JPanel delp;
     private javax.swing.JPanel editp;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;

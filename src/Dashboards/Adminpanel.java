@@ -26,22 +26,18 @@ public class Adminpanel extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jPanel5 = new javax.swing.JPanel();
+        dashpanel = new javax.swing.JPanel();
         jLabel17 = new javax.swing.JLabel();
         userbtm = new javax.swing.JPanel();
         usertxt = new javax.swing.JLabel();
         userbtm1 = new javax.swing.JPanel();
         usertxt1 = new javax.swing.JLabel();
-        jPanel6 = new javax.swing.JPanel();
+        transpanel = new javax.swing.JPanel();
         usertxt3 = new javax.swing.JLabel();
-        jPanel7 = new javax.swing.JPanel();
+        setpanel = new javax.swing.JPanel();
         usertxt4 = new javax.swing.JLabel();
         jPanel8 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -63,14 +59,22 @@ public class Adminpanel extends javax.swing.JFrame {
         jLabel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
         jPanel4.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 150, 130));
 
-        jPanel5.setBackground(new java.awt.Color(255, 102, 0));
-        jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        dashpanel.setBackground(new java.awt.Color(255, 102, 0));
+        dashpanel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                dashpanelMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                dashpanelMouseExited(evt);
+            }
+        });
+        dashpanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel17.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
         jLabel17.setText("  DASHBOARD");
-        jPanel5.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 170, -1));
+        dashpanel.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 170, 30));
 
-        jPanel4.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 150, 170, 60));
+        jPanel4.add(dashpanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 150, 170, 60));
 
         userbtm.setBackground(new java.awt.Color(255, 102, 0));
         userbtm.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -130,8 +134,16 @@ public class Adminpanel extends javax.swing.JFrame {
 
         jPanel4.add(userbtm1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 230, 170, 60));
 
-        jPanel6.setBackground(new java.awt.Color(255, 102, 0));
-        jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        transpanel.setBackground(new java.awt.Color(255, 102, 0));
+        transpanel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                transpanelMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                transpanelMouseExited(evt);
+            }
+        });
+        transpanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         usertxt3.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
         usertxt3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -147,12 +159,20 @@ public class Adminpanel extends javax.swing.JFrame {
                 usertxt3MouseExited(evt);
             }
         });
-        jPanel6.add(usertxt3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 170, -1));
+        transpanel.add(usertxt3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 170, -1));
 
-        jPanel4.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 310, 170, 60));
+        jPanel4.add(transpanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 310, 170, 70));
 
-        jPanel7.setBackground(new java.awt.Color(255, 102, 0));
-        jPanel7.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        setpanel.setBackground(new java.awt.Color(255, 102, 0));
+        setpanel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                setpanelMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                setpanelMouseExited(evt);
+            }
+        });
+        setpanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         usertxt4.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
         usertxt4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -168,9 +188,9 @@ public class Adminpanel extends javax.swing.JFrame {
                 usertxt4MouseExited(evt);
             }
         });
-        jPanel7.add(usertxt4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 170, -1));
+        setpanel.add(usertxt4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 170, -1));
 
-        jPanel4.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 390, 170, 60));
+        jPanel4.add(setpanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 390, 170, 60));
 
         jPanel8.setBackground(new java.awt.Color(255, 102, 0));
         jPanel8.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -180,21 +200,6 @@ public class Adminpanel extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(255, 102, 0));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel7.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabel7.setText("TRANSACTION");
-        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 160, -1, -1));
-
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8-get-revenue-64.png"))); // NOI18N
-        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 90, -1, -1));
-
-        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8-invoices-60.png"))); // NOI18N
-        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 90, -1, -1));
-
-        jLabel12.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabel12.setText("TOTAL REVENUE");
-        jPanel2.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 160, -1, -1));
-
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 90, 660, 480));
 
         jPanel3.setBackground(new java.awt.Color(255, 102, 0));
@@ -204,6 +209,7 @@ public class Adminpanel extends javax.swing.JFrame {
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 860, 580));
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void usertxtMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_usertxtMouseClicked
@@ -213,11 +219,11 @@ public class Adminpanel extends javax.swing.JFrame {
     }//GEN-LAST:event_usertxtMouseClicked
 
     private void usertxtMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_usertxtMouseEntered
-        usertxt.setBackground(lightorange);
+      
     }//GEN-LAST:event_usertxtMouseEntered
 
     private void usertxtMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_usertxtMouseExited
-        usertxt.setBackground(orange);
+       
     }//GEN-LAST:event_usertxtMouseExited
 
     private void usertxt3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_usertxt3MouseClicked
@@ -272,6 +278,31 @@ public class Adminpanel extends javax.swing.JFrame {
         userbtm.setBackground(lightorange);
     }//GEN-LAST:event_userbtmMouseEntered
 
+    private void dashpanelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dashpanelMouseEntered
+        dashpanel.setBackground(lightorange);
+    }//GEN-LAST:event_dashpanelMouseEntered
+
+    private void dashpanelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dashpanelMouseExited
+        dashpanel.setBackground(orange);
+    }//GEN-LAST:event_dashpanelMouseExited
+
+    private void transpanelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_transpanelMouseEntered
+        transpanel.setBackground(lightorange);
+    }//GEN-LAST:event_transpanelMouseEntered
+
+    private void transpanelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_transpanelMouseExited
+        transpanel.setBackground(orange);
+    }//GEN-LAST:event_transpanelMouseExited
+
+    private void setpanelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_setpanelMouseEntered
+        setpanel.setBackground(lightorange);
+    }//GEN-LAST:event_setpanelMouseEntered
+
+    private void setpanelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_setpanelMouseExited
+       setpanel.setBackground(orange);
+
+    }//GEN-LAST:event_setpanelMouseExited
+
     /**
      * @param args the command line arguments
      */
@@ -308,22 +339,18 @@ public class Adminpanel extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel dashpanel;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
-    private javax.swing.JPanel jPanel6;
-    private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
+    private javax.swing.JPanel setpanel;
+    private javax.swing.JPanel transpanel;
     private javax.swing.JPanel userbtm;
     private javax.swing.JPanel userbtm1;
     private javax.swing.JLabel usertxt;
