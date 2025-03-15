@@ -51,9 +51,9 @@ public class Userpanel extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         addp = new javax.swing.JPanel();
-        jLabel8 = new javax.swing.JLabel();
+        add = new javax.swing.JLabel();
         editp = new javax.swing.JPanel();
-        jLabel9 = new javax.swing.JLabel();
+        edit = new javax.swing.JLabel();
         refp = new javax.swing.JPanel();
         delete = new javax.swing.JLabel();
         delp = new javax.swing.JPanel();
@@ -81,35 +81,54 @@ public class Userpanel extends javax.swing.JFrame {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 addpMouseEntered(evt);
             }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                addpMouseExited(evt);
+            }
         });
         addp.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel8.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
-        jLabel8.setText("         ADD");
-        jLabel8.addMouseListener(new java.awt.event.MouseAdapter() {
+        add.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
+        add.setText("         ADD");
+        add.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel8MouseClicked(evt);
+                addMouseClicked(evt);
             }
         });
-        addp.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 170, 20));
+        addp.add(add, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 170, 20));
 
         jPanel4.add(addp, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 150, 170, 60));
 
         editp.setBackground(new java.awt.Color(255, 102, 0));
-        editp.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel9.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
-        jLabel9.setText("         EDIT");
-        jLabel9.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel9MouseClicked(evt);
+        editp.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                editpMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                editpMouseExited(evt);
             }
         });
-        editp.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 170, 20));
+        editp.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        edit.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
+        edit.setText("         EDIT");
+        edit.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                editMouseClicked(evt);
+            }
+        });
+        editp.add(edit, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 170, 20));
 
         jPanel4.add(editp, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 220, 170, 60));
 
         refp.setBackground(new java.awt.Color(255, 102, 0));
+        refp.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                refpMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                refpMouseExited(evt);
+            }
+        });
         refp.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         delete.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
@@ -124,6 +143,14 @@ public class Userpanel extends javax.swing.JFrame {
         jPanel4.add(refp, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 370, 170, 60));
 
         delp.setBackground(new java.awt.Color(255, 102, 0));
+        delp.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                delpMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                delpMouseExited(evt);
+            }
+        });
         delp.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         delete1.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
@@ -202,7 +229,7 @@ public class Userpanel extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void addpMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addpMouseEntered
-       
+    addp.setBackground(lightorange);
     }//GEN-LAST:event_addpMouseEntered
 
     private void logpanelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logpanelMouseEntered
@@ -229,13 +256,13 @@ public class Userpanel extends javax.swing.JFrame {
         
     }//GEN-LAST:event_logpanelMouseClicked
 
-    private void jLabel8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseClicked
+    private void addMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addMouseClicked
       adduser au = new adduser();
       au.setVisible(true);
       this.dispose();
-    }//GEN-LAST:event_jLabel8MouseClicked
+    }//GEN-LAST:event_addMouseClicked
 
-    private void jLabel9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel9MouseClicked
+    private void editMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editMouseClicked
     int rowIndex = tbl_users.getSelectedRow();
      
      
@@ -266,10 +293,15 @@ public class Userpanel extends javax.swing.JFrame {
                        System.out.println(""+e.getMessage());
                   }
       }        
-    }//GEN-LAST:event_jLabel9MouseClicked
+    }//GEN-LAST:event_editMouseClicked
 
     private void deleteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteMouseClicked
       
+    
+    }//GEN-LAST:event_deleteMouseClicked
+
+    private void delete1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_delete1MouseClicked
+       
     int response = JOptionPane.showConfirmDialog(this, "Are you sure you want to delete this user?", 
                                                   "Confirm Deletion", JOptionPane.YES_NO_OPTION);
     
@@ -290,15 +322,43 @@ public class Userpanel extends javax.swing.JFrame {
 }
 
 
-private boolean deleteUserFromDatabase() {
+   private boolean deleteUserFromDatabase() {
    
     return true; 
 
-    }//GEN-LAST:event_deleteMouseClicked
-
-    private void delete1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_delete1MouseClicked
-        // TODO add your handling code here:
     }//GEN-LAST:event_delete1MouseClicked
+
+    private void addpMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addpMouseExited
+       addp.setBackground(orange);
+
+    }//GEN-LAST:event_addpMouseExited
+
+    private void delpMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_delpMouseEntered
+        delp.setBackground(lightorange);
+    }//GEN-LAST:event_delpMouseEntered
+
+    private void delpMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_delpMouseExited
+        delp.setBackground(orange);
+
+    }//GEN-LAST:event_delpMouseExited
+
+    private void editpMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editpMouseEntered
+       editp.setBackground(lightorange);
+    }//GEN-LAST:event_editpMouseEntered
+
+    private void editpMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editpMouseExited
+       editp.setBackground(orange);
+    }//GEN-LAST:event_editpMouseExited
+
+    private void refpMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_refpMouseEntered
+       refp.setBackground(lightorange);
+
+    }//GEN-LAST:event_refpMouseEntered
+
+    private void refpMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_refpMouseExited
+       refp.setBackground(orange);
+
+    }//GEN-LAST:event_refpMouseExited
 
     /**
      * @param args the command line arguments
@@ -336,16 +396,16 @@ private boolean deleteUserFromDatabase() {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel add;
     private javax.swing.JPanel addp;
     private javax.swing.JLabel delete;
     private javax.swing.JLabel delete1;
     private javax.swing.JPanel delp;
+    private javax.swing.JLabel edit;
     private javax.swing.JPanel editp;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel4;
