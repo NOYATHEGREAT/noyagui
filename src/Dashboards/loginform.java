@@ -2,6 +2,7 @@ package Dashboards;
 
 import Dashboards.Adminpanel;
 import config.dbconn;
+import config.session;
 import java.awt.Color;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -26,7 +27,16 @@ public class loginform extends javax.swing.JFrame {
              
                 status1 = resultSet.getString("status_1");
                 type1 = resultSet.getString("type");
-                 
+             
+                    session sess = session.getInstance();
+                    sess.setId(resultSet.getInt("id"));
+                    sess.setFname(resultSet.getString("fname"));
+                    sess.setLname(resultSet.getString("lname"));
+                    sess.setEmail(resultSet.getString("email"));
+                    sess.setUname(resultSet.getString("username"));
+                    sess.setType(resultSet.getString("type"));
+                    sess.setStatus(resultSet.getString("status"));
+                     System.out.println(""+sess.getId());
                   return true;
             }else{
                 return false;

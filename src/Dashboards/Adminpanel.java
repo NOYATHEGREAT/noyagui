@@ -1,5 +1,6 @@
 
 package Dashboards;
+import config.session;
 import java.awt.Color;
 import javax.swing.JOptionPane;
 
@@ -24,7 +25,6 @@ public class Adminpanel extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         dashpanel = new javax.swing.JPanel();
         jLabel17 = new javax.swing.JLabel();
@@ -37,10 +37,20 @@ public class Adminpanel extends javax.swing.JFrame {
         setpanel = new javax.swing.JPanel();
         usertxt4 = new javax.swing.JLabel();
         jPanel8 = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
+        acc_id = new javax.swing.JLabel();
+        acc_name = new javax.swing.JLabel();
+        acc_lname = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowActivated(java.awt.event.WindowEvent evt) {
+                formWindowActivated(evt);
+            }
+        });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(255, 204, 102));
@@ -51,10 +61,6 @@ public class Adminpanel extends javax.swing.JFrame {
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8-admin-50.png"))); // NOI18N
         jPanel4.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 40, 50, 50));
-
-        jLabel1.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
-        jLabel1.setText("      ADMIN");
-        jPanel4.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, 160, 20));
 
         jLabel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
         jPanel4.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 150, 130));
@@ -196,6 +202,10 @@ public class Adminpanel extends javax.swing.JFrame {
         jPanel8.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         jPanel4.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 470, 170, 60));
 
+        jLabel4.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
+        jLabel4.setText("      ADMIN");
+        jPanel4.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, 160, 20));
+
         jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 170, 560));
 
         jPanel2.setBackground(new java.awt.Color(255, 102, 0));
@@ -204,6 +214,23 @@ public class Adminpanel extends javax.swing.JFrame {
 
         jPanel3.setBackground(new java.awt.Color(255, 102, 0));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        acc_id.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
+        acc_id.setText("ID");
+        jPanel3.add(acc_id, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 40, 30, 20));
+
+        acc_name.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
+        acc_name.setText(" ADMIN");
+        jPanel3.add(acc_name, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 90, 20));
+
+        acc_lname.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
+        acc_lname.setText(" ADMIN");
+        jPanel3.add(acc_lname, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 10, 90, 20));
+
+        jLabel7.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
+        jLabel7.setText("ID:");
+        jPanel3.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 30, 20));
+
         jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 10, 660, 70));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 860, 580));
@@ -303,6 +330,20 @@ public class Adminpanel extends javax.swing.JFrame {
 
     }//GEN-LAST:event_setpanelMouseExited
 
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+        session sess = session.getInstance();
+       if(sess.getId()== 0){
+       JOptionPane.showMessageDialog(null,"No Account, Log in First");
+       loginform Adminpanel = new loginform();
+       Adminpanel.setVisible(true);
+       this.dispose();
+       }else{
+            acc_name.setText(""+sess.getFname());
+            acc_lname.setText(""+sess.getLname());
+            acc_id.setText(""+sess.getId());
+       }
+    }//GEN-LAST:event_formWindowActivated
+
     /**
      * @param args the command line arguments
      */
@@ -339,11 +380,15 @@ public class Adminpanel extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel acc_id;
+    private javax.swing.JLabel acc_lname;
+    private javax.swing.JLabel acc_name;
     private javax.swing.JPanel dashpanel;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;

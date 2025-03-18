@@ -59,8 +59,8 @@ public class Userpanel extends javax.swing.JFrame {
         delp = new javax.swing.JPanel();
         delete1 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tbl_users = new javax.swing.JTable();
         jPanel2 = new javax.swing.JPanel();
@@ -167,13 +167,13 @@ public class Userpanel extends javax.swing.JFrame {
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8-user-50 (1).png"))); // NOI18N
         jPanel4.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 50, 50, -1));
 
-        jLabel2.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText(" USER");
-        jPanel4.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, 150, -1));
-
         jLabel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
         jPanel4.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 150, 130));
+
+        jLabel5.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel5.setText(" USER");
+        jPanel4.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, 150, -1));
 
         jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 170, 580));
 
@@ -218,7 +218,7 @@ public class Userpanel extends javax.swing.JFrame {
         });
         logpanel.add(logtxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 140, 20));
 
-        jPanel2.add(logpanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 10, 140, 40));
+        jPanel2.add(logpanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 0, 140, 40));
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 10, 680, 110));
 
@@ -403,9 +403,9 @@ public class Userpanel extends javax.swing.JFrame {
     private javax.swing.JPanel delp;
     private javax.swing.JLabel edit;
     private javax.swing.JPanel editp;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel4;
