@@ -285,6 +285,7 @@ public class edituser extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void updatebtmMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_updatebtmMouseClicked
@@ -355,8 +356,8 @@ public class edituser extends javax.swing.JFrame {
     }//GEN-LAST:event_updatebtmActionPerformed
 
     private void cancelbtmMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancelbtmMouseClicked
-        loginform lf = new loginform();
-        lf.setVisible(true);
+        Adminpanel Ap = new Adminpanel();
+        Ap.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_cancelbtmMouseClicked
 
@@ -369,8 +370,8 @@ public class edituser extends javax.swing.JFrame {
     }//GEN-LAST:event_cancelbtmMouseExited
 
     private void cancelbtmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelbtmActionPerformed
-        loginform lf = new loginform();
-        lf.setVisible(true);
+       Adminpanel Ap = new Adminpanel();
+        Ap.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_cancelbtmActionPerformed
 

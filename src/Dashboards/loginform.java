@@ -2,8 +2,10 @@ package Dashboards;
 
 import Dashboards.Adminpanel;
 import config.dbconn;
+import config.passwordHasher;
 import config.session;
 import java.awt.Color;
+import java.security.NoSuchAlgorithmException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
@@ -20,29 +22,44 @@ public class loginform extends javax.swing.JFrame {
     public static boolean loginAccount(String username, String password){
         dbconn db = new dbconn();
         try{
-            String query = "SELECT * FROM tbl_users WHERE username = '"+ username +"' AND pass = '"+password+"'";
+            String query = "SELECT * FROM tbl_users WHERE username = '"+ username +"'";
             ResultSet resultSet = db.getData(query);
            
             if(resultSet.next()){
-             
+            
+                
+                
+                String hashedPasss = resultSet.getString("pass");
+                String rehashedPass = passwordHasher.hashPassword(password);
+                
+                
+                System.out.println(""+hashedPasss);
+                System.out.println(""+rehashedPass);
+                if(hashedPasss.equals(rehashedPass)){
                 status1 = resultSet.getString("status_1");
                 type1 = resultSet.getString("type");
              
                     session sess = session.getInstance();
-                    sess.setId(resultSet.getInt("id"));
-                    sess.setFname(resultSet.getString("fname"));
-                    sess.setLname(resultSet.getString("lname"));
-                    sess.setEmail(resultSet.getString("email"));
+                    sess.setId(resultSet.getInt("u_id"));
+                    sess.setFname(resultSet.getString("f_name"));
+                    sess.setLname(resultSet.getString("last_name"));
+                   
                     sess.setUname(resultSet.getString("username"));
                     sess.setType(resultSet.getString("type"));
-                    sess.setStatus(resultSet.getString("status"));
-                     System.out.println(""+sess.getId());
+                    sess.setStatus(resultSet.getString("status_1"));
+                     sess.setPass(resultSet.getString("pass"));
+                      
+                    System.out.println(""+sess.getId());
                   return true;
+                }else{
+                    System.out.println("Password does not match!!");
+                    return false;
+                }
             }else{
                 return false;
             }
-        }catch(SQLException e){
-           
+        }catch(SQLException  | NoSuchAlgorithmException e){
+            System.out.println(""+e);
             return false;
         }
        
@@ -220,39 +237,39 @@ public class loginform extends javax.swing.JFrame {
 
     private void loginbtm1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loginbtm1MouseClicked
    
-                    if (username.getText().isEmpty() && pass.getText().isEmpty()) {
-                 JOptionPane.showMessageDialog(null, "Please put username and password");
-             } else if (username.getText().isEmpty()) {
-                 JOptionPane.showMessageDialog(null, "Please enter your username.");
-             } else if (pass.getText().isEmpty()) {
-                 JOptionPane.showMessageDialog(null, "Please enter your password.");
-             } else {
+                 if (username.getText().isEmpty() && pass.getText().isEmpty()) {
+    JOptionPane.showMessageDialog(null, "Please put username and password");
+} else if (username.getText().isEmpty()) {
+    JOptionPane.showMessageDialog(null, "Please enter your username.");
+} else if (pass.getText().isEmpty()) {
+    JOptionPane.showMessageDialog(null, "Please enter your password.");
+} else {
+    if (loginAccount(username.getText(), pass.getText())) {
+        if (!status1.equals("Active")) {
+            JOptionPane.showMessageDialog(null, "Your account is not active, Please wait for a few minutes...");
+        } else {
+            System.out.println("Log in Account");
+            if (type1.equals("Admin")) {
+                Adminpanel ad = new Adminpanel();
+                ad.setVisible(true);
+                this.dispose();
+            } else if (type1.equals("User")) {
+                userDashboard ad = new userDashboard();
+                ad.setVisible(true);
+                this.dispose();
+            } else {
+                JOptionPane.showMessageDialog(null, "No account type found!");
+            }
+        }
+    } else {
+        JOptionPane.showMessageDialog(null, "Invalid username or password!");
+    }
+}
 
+             
 
-                 if (loginAccount(username.getText(), pass.getText())) {
-                     System.out.println("Login successful in method!");
-                     if (!status1.equals("Active")) {
-                         JOptionPane.showMessageDialog(null, "Your account is not active, Please wait for a minutes.....");
-                     } else {
-                         JOptionPane.showMessageDialog(null, "Login successful!");
-                         if (type1.equals("Admin")) {
-                             Adminpanel ad = new Adminpanel();
-                             ad.setVisible(true);
-                             this.dispose();
-                         } else if (type1.equals("User")) {
-                             userDashboard ad = new userDashboard();
-                             ad.setVisible(true);
-                             this.dispose();
-                         } else {
-                             JOptionPane.showMessageDialog(null, "No account type found!");
-                         }
-                     }
-                 } else {
-                     JOptionPane.showMessageDialog(null, "Invalid Account, Please Register!", "Login Failed", JOptionPane.ERROR_MESSAGE);
-                 }
-             }
-
-        
+             
+                
     }//GEN-LAST:event_loginbtm1MouseClicked
 
     /**

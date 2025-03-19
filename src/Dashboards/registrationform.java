@@ -2,7 +2,9 @@ package Dashboards;
 
 import Dashboards.loginform;
 import config.dbconn;
+import config.passwordHasher;
 import java.awt.Color;
+import java.security.NoSuchAlgorithmException;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -329,9 +331,10 @@ public class registrationform extends javax.swing.JFrame {
     }//GEN-LAST:event_lastnameActionPerformed
 
     private void registerbtm4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registerbtm4MouseClicked
-     
+     try{
         dbconn db = new dbconn();
-      
+         String pass1 = passwordHasher.hashPassword(pass.getText());
+           String pass2 = passwordHasher.hashPassword(cpass.getText());
         if(username.getText().isEmpty() || fname.getText().isEmpty() || lastname.getText().isEmpty() || email.getText().isEmpty() || ph.getText().isEmpty() 
                 || pass.getText().isEmpty() || cpass.getText().isEmpty()){
                JOptionPane.showMessageDialog(null, "All fields required");
@@ -354,13 +357,16 @@ public class registrationform extends javax.swing.JFrame {
         }
         else if (db.insertData("INSERT INTO tbl_users (f_name, last_name, username, email, phone_number, pass, cpass, status_1, type) "
                 + "VALUES ('"+fname.getText()+"', '"+lastname.getText()+"', '"+username.getText()+"', '"+email.getText()+"', "
-                        + "'"+ph.getText()+"', '"+pass.getText()+"', "
-                                + "'"+cpass.getText()+"', 'Pending','"+type.getSelectedItem()+"')") == 1){
+                        + "'"+ph.getText()+"', '"+pass1+"', "
+                                + "'"+pass2+"', 'Pending','"+type.getSelectedItem()+"')") == 1){
             JOptionPane.showMessageDialog(null, "Submitted Successfully");
              loginform lf = new loginform();
             lf.setVisible(true);
             this.dispose();
         }
+     }catch(NoSuchAlgorithmException e){
+         System.out.println(""+e);
+     }
         
         
     }//GEN-LAST:event_registerbtm4MouseClicked
