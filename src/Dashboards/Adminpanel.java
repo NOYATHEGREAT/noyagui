@@ -37,6 +37,7 @@ public class Adminpanel extends javax.swing.JFrame {
         setpanel = new javax.swing.JPanel();
         usertxt4 = new javax.swing.JLabel();
         jPanel8 = new javax.swing.JPanel();
+        usertxt5 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
@@ -194,12 +195,29 @@ public class Adminpanel extends javax.swing.JFrame {
                 usertxt4MouseExited(evt);
             }
         });
-        setpanel.add(usertxt4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 170, -1));
+        setpanel.add(usertxt4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 170, 30));
 
         jPanel4.add(setpanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 390, 170, 60));
 
         jPanel8.setBackground(new java.awt.Color(255, 102, 0));
         jPanel8.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        usertxt5.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
+        usertxt5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        usertxt5.setText("LOG OUT");
+        usertxt5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                usertxt5MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                usertxt5MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                usertxt5MouseExited(evt);
+            }
+        });
+        jPanel8.add(usertxt5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 170, 40));
+
         jPanel4.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 470, 170, 60));
 
         jLabel4.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
@@ -216,8 +234,9 @@ public class Adminpanel extends javax.swing.JFrame {
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         acc_id.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
+        acc_id.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         acc_id.setText("ID");
-        jPanel3.add(acc_id, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 40, 30, 20));
+        jPanel3.add(acc_id, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 40, 60, 20));
 
         acc_name.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
         acc_name.setText(" ADMIN");
@@ -266,7 +285,9 @@ public class Adminpanel extends javax.swing.JFrame {
     }//GEN-LAST:event_usertxt3MouseExited
 
     private void usertxt4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_usertxt4MouseClicked
-        // TODO add your handling code here:
+      Userinfo ui = new Userinfo();
+      ui.setVisible(true);
+      this.dispose();
     }//GEN-LAST:event_usertxt4MouseClicked
 
     private void usertxt4MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_usertxt4MouseEntered
@@ -344,6 +365,28 @@ public class Adminpanel extends javax.swing.JFrame {
        }
     }//GEN-LAST:event_formWindowActivated
 
+    private void usertxt5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_usertxt5MouseClicked
+       int choice = JOptionPane.showConfirmDialog(null, "Do you want to log out?", "Logout Confirmation!",
+        JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+
+if (choice == JOptionPane.YES_OPTION) {
+   
+   
+
+    loginform lf = new loginform();
+    lf.setVisible(true);
+    this.dispose();
+}
+    }//GEN-LAST:event_usertxt5MouseClicked
+
+    private void usertxt5MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_usertxt5MouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_usertxt5MouseEntered
+
+    private void usertxt5MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_usertxt5MouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_usertxt5MouseExited
+
     /**
      * @param args the command line arguments
      */
@@ -402,5 +445,6 @@ public class Adminpanel extends javax.swing.JFrame {
     private javax.swing.JLabel usertxt1;
     private javax.swing.JLabel usertxt3;
     private javax.swing.JLabel usertxt4;
+    private javax.swing.JLabel usertxt5;
     // End of variables declaration//GEN-END:variables
 }

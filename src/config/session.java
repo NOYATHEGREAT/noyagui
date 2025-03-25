@@ -15,12 +15,20 @@ public class session {
     private String fname;
     private String lname;
     private String email;
+
+    public String getContact() {
+        return contact;
+    }
+
+    public void setContact(String contact) {
+        this.contact = contact;
+    }
     private String uname;
     private String type;
     private String pass;
     private String status;
     private String image;
-    
+    private String contact;
     private session(){
     //private cons pevents intance
     }

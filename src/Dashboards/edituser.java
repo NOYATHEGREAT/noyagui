@@ -30,7 +30,7 @@ public class edituser extends javax.swing.JFrame {
      public boolean updatechecker(){
         dbconn db = new dbconn();
         try{
-        String query = "SELECT * FROM tbl_user WHERE (email = '"+email.getText()+"') AND u_id != '"+u_id.getText()+"'";
+        String query = "SELECT * FROM tbl_users WHERE (email = '"+email.getText()+"') AND u_id != '"+u_id.getText()+"'";
         ResultSet resultSet = db.getData(query);
        
        
@@ -314,7 +314,7 @@ public class edituser extends javax.swing.JFrame {
                                pstmt.setString(2, ph.getText());
                                pstmt.setString(3, (String) type1.getSelectedItem());
                                pstmt.setString(4, pass1);
-                               pstmt.setString(5, (String) type1.getSelectedItem());
+                               pstmt.setString(5, (String) status.getSelectedItem());
                                pstmt.setString(6, u_id.getText());
 
 
@@ -356,9 +356,9 @@ public class edituser extends javax.swing.JFrame {
     }//GEN-LAST:event_updatebtmActionPerformed
 
     private void cancelbtmMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancelbtmMouseClicked
-        Adminpanel Ap = new Adminpanel();
-        Ap.setVisible(true);
-        this.dispose();
+       Userpanel up = new Userpanel();
+       up.setVisible(true);
+       this.dispose();
     }//GEN-LAST:event_cancelbtmMouseClicked
 
     private void cancelbtmMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancelbtmMouseEntered
@@ -370,9 +370,9 @@ public class edituser extends javax.swing.JFrame {
     }//GEN-LAST:event_cancelbtmMouseExited
 
     private void cancelbtmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelbtmActionPerformed
-       Adminpanel Ap = new Adminpanel();
-        Ap.setVisible(true);
-        this.dispose();
+      Userpanel up = new Userpanel();
+      up.setVisible(true);
+      this.dispose();
     }//GEN-LAST:event_cancelbtmActionPerformed
 
     private void lastnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lastnameActionPerformed

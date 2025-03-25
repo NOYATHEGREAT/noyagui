@@ -96,8 +96,6 @@ public class registrationform extends javax.swing.JFrame {
         ph = new javax.swing.JTextField();
         passtxt = new javax.swing.JLabel();
         pass = new javax.swing.JPasswordField();
-        cpasstxt = new javax.swing.JLabel();
-        cpass = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(860, 610));
@@ -130,7 +128,7 @@ public class registrationform extends javax.swing.JFrame {
                 registerbtm4ActionPerformed(evt);
             }
         });
-        backg3.add(registerbtm4, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 650, 120, 40));
+        backg3.add(registerbtm4, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 590, 120, 40));
 
         cancelbtm.setBackground(new java.awt.Color(255, 255, 255));
         cancelbtm.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
@@ -151,7 +149,7 @@ public class registrationform extends javax.swing.JFrame {
                 cancelbtmActionPerformed(evt);
             }
         });
-        backg3.add(cancelbtm, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 650, 130, 40));
+        backg3.add(cancelbtm, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 590, 130, 40));
 
         lastname.setBackground(new java.awt.Color(255, 204, 102));
         lastname.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
@@ -197,7 +195,7 @@ public class registrationform extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel1.setText("TYPE");
-        backg3.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 567, 130, 20));
+        backg3.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 500, 130, 20));
 
         type.setBackground(new java.awt.Color(255, 204, 102));
         type.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
@@ -208,7 +206,7 @@ public class registrationform extends javax.swing.JFrame {
                 typeActionPerformed(evt);
             }
         });
-        backg3.add(type, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 590, 280, 40));
+        backg3.add(type, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 530, 280, 40));
 
         usertxt2.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         usertxt2.setText("USERNAME");
@@ -255,20 +253,6 @@ public class registrationform extends javax.swing.JFrame {
             }
         });
         backg3.add(pass, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 450, 280, 40));
-
-        cpasstxt.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        cpasstxt.setText("CONFIRM PASSWORD");
-        backg3.add(cpasstxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 500, 160, -1));
-
-        cpass.setBackground(new java.awt.Color(255, 204, 102));
-        cpass.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        cpass.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
-        cpass.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cpassActionPerformed(evt);
-            }
-        });
-        backg3.add(cpass, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 520, 280, 40));
 
         jPanel2.add(backg3, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 70, 450, 730));
 
@@ -334,9 +318,9 @@ public class registrationform extends javax.swing.JFrame {
      try{
         dbconn db = new dbconn();
          String pass1 = passwordHasher.hashPassword(pass.getText());
-           String pass2 = passwordHasher.hashPassword(cpass.getText());
+          
         if(username.getText().isEmpty() || fname.getText().isEmpty() || lastname.getText().isEmpty() || email.getText().isEmpty() || ph.getText().isEmpty() 
-                || pass.getText().isEmpty() || cpass.getText().isEmpty()){
+                || pass.getText().isEmpty()){
                JOptionPane.showMessageDialog(null, "All fields required");
         }else if(duplicateChecker()){
             System.out.println("Duplicates Existed");
@@ -350,15 +334,12 @@ public class registrationform extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Contact number exceeded");
         }else if(pass.getText().length() < 8){
             JOptionPane.showMessageDialog(null, "Password must be at least 8 characters long");
-        }else if(!pass.getText().equals(cpass.getText())){
-            JOptionPane.showMessageDialog(null, "Password not Matches");
         }else if(type.getSelectedIndex() == 0){
             JOptionPane.showMessageDialog(null, "Please select a type of user");
         }
-        else if (db.insertData("INSERT INTO tbl_users (f_name, last_name, username, email, phone_number, pass, cpass, status_1, type) "
+        else if (db.insertData("INSERT INTO tbl_users (f_name, last_name, username, email, phone_number, pass, type , status_1) "
                 + "VALUES ('"+fname.getText()+"', '"+lastname.getText()+"', '"+username.getText()+"', '"+email.getText()+"', "
-                        + "'"+ph.getText()+"', '"+pass1+"', "
-                                + "'"+pass2+"', 'Pending','"+type.getSelectedItem()+"')") == 1){
+                        + "'"+ph.getText()+"', '"+pass1+"','"+type.getSelectedItem()+"' ,'Pending')") == 1){
             JOptionPane.showMessageDialog(null, "Submitted Successfully");
              loginform lf = new loginform();
             lf.setVisible(true);
@@ -384,10 +365,6 @@ public class registrationform extends javax.swing.JFrame {
     private void typeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_typeActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_typeActionPerformed
-
-    private void cpassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cpassActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cpassActionPerformed
 
     /**
      * @param args the command line arguments
@@ -428,8 +405,6 @@ public class registrationform extends javax.swing.JFrame {
     private javax.swing.JLabel Fname;
     private javax.swing.JPanel backg3;
     private javax.swing.JButton cancelbtm;
-    private javax.swing.JPasswordField cpass;
-    private javax.swing.JLabel cpasstxt;
     private javax.swing.JTextField email;
     private javax.swing.JLabel emailtxt;
     private javax.swing.JTextField fname;

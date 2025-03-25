@@ -4,7 +4,9 @@
  * and open the template in the editor.
  */
 package Dashboards;
+import config.session;
 import java.awt.Color;
+import javax.swing.JOptionPane;
 /**
  *
  * @author Administrator
@@ -32,24 +34,31 @@ public class Userinfo extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         backg3 = new javax.swing.JPanel();
         enter = new javax.swing.JButton();
-        email = new javax.swing.JTextField();
         lname = new javax.swing.JLabel();
-        userid = new javax.swing.JTextField();
         Fname = new javax.swing.JLabel();
-        nemail = new javax.swing.JTextField();
         title2 = new javax.swing.JLabel();
         usertxt2 = new javax.swing.JLabel();
         usertxt3 = new javax.swing.JLabel();
-        nemail1 = new javax.swing.JTextField();
         usertxt4 = new javax.swing.JLabel();
-        nemail2 = new javax.swing.JTextField();
         enter1 = new javax.swing.JButton();
         enter2 = new javax.swing.JButton();
         enter3 = new javax.swing.JButton();
         Fname1 = new javax.swing.JLabel();
-        userid1 = new javax.swing.JTextField();
+        userid1 = new javax.swing.JLabel();
+        name = new javax.swing.JLabel();
+        name1 = new javax.swing.JLabel();
+        pass = new javax.swing.JLabel();
+        username = new javax.swing.JLabel();
+        username1 = new javax.swing.JLabel();
+        nemail = new javax.swing.JLabel();
+        cn = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowActivated(java.awt.event.WindowEvent evt) {
+                formWindowActivated(evt);
+            }
+        });
 
         jPanel2.setBackground(new java.awt.Color(255, 204, 102));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -78,43 +87,13 @@ public class Userinfo extends javax.swing.JFrame {
         });
         backg3.add(enter, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 660, 180, 40));
 
-        email.setBackground(new java.awt.Color(255, 204, 102));
-        email.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        email.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
-        email.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                emailActionPerformed(evt);
-            }
-        });
-        backg3.add(email, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 300, 280, 40));
-
         lname.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         lname.setText("USERNAME");
         backg3.add(lname, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 280, 130, -1));
 
-        userid.setBackground(new java.awt.Color(255, 204, 102));
-        userid.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        userid.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
-        userid.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                useridActionPerformed(evt);
-            }
-        });
-        backg3.add(userid, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 230, 280, 40));
-
         Fname.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         Fname.setText("NAME");
         backg3.add(Fname, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 210, 130, -1));
-
-        nemail.setBackground(new java.awt.Color(255, 204, 102));
-        nemail.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        nemail.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
-        nemail.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nemailActionPerformed(evt);
-            }
-        });
-        backg3.add(nemail, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 370, 280, 40));
 
         title2.setFont(new java.awt.Font("Arial", 1, 30)); // NOI18N
         title2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -129,33 +108,13 @@ public class Userinfo extends javax.swing.JFrame {
         usertxt3.setText("CONTACT");
         backg3.add(usertxt3, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 470, 120, -1));
 
-        nemail1.setBackground(new java.awt.Color(255, 204, 102));
-        nemail1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        nemail1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
-        nemail1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nemail1ActionPerformed(evt);
-            }
-        });
-        backg3.add(nemail1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 490, 280, 40));
-
         usertxt4.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         usertxt4.setText("PASSWORD");
         backg3.add(usertxt4, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 590, 120, 20));
 
-        nemail2.setBackground(new java.awt.Color(255, 204, 102));
-        nemail2.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        nemail2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
-        nemail2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nemail2ActionPerformed(evt);
-            }
-        });
-        backg3.add(nemail2, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 610, 280, 40));
-
         enter1.setBackground(new java.awt.Color(255, 255, 255));
         enter1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        enter1.setText("ENTER");
+        enter1.setText("BACK");
         enter1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 enter1MouseClicked(evt);
@@ -220,15 +179,37 @@ public class Userinfo extends javax.swing.JFrame {
         Fname1.setText("USER ID");
         backg3.add(Fname1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 140, 60, -1));
 
-        userid1.setBackground(new java.awt.Color(255, 204, 102));
         userid1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         userid1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
-        userid1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                userid1ActionPerformed(evt);
-            }
-        });
         backg3.add(userid1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 160, 280, 40));
+
+        name.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        name.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
+        backg3.add(name, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 230, 280, 40));
+
+        name1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        name1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
+        backg3.add(name1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 230, 280, 40));
+
+        pass.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        pass.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
+        backg3.add(pass, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 610, 280, 40));
+
+        username.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        username.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
+        backg3.add(username, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 300, 280, 40));
+
+        username1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        username1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
+        backg3.add(username1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 300, 280, 40));
+
+        nemail.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        nemail.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
+        backg3.add(nemail, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 370, 280, 40));
+
+        cn.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        cn.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
+        backg3.add(cn, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 490, 280, 40));
 
         jPanel2.add(backg3, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 40, 600, 790));
 
@@ -246,10 +227,13 @@ public class Userinfo extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void enterMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_enterMouseClicked
-
+changepassword cp = new changepassword();
+cp.setVisible(true);
+this.dispose();
     }//GEN-LAST:event_enterMouseClicked
 
     private void enterMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_enterMouseEntered
@@ -264,28 +248,10 @@ public class Userinfo extends javax.swing.JFrame {
 
     }//GEN-LAST:event_enterActionPerformed
 
-    private void emailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emailActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_emailActionPerformed
-
-    private void useridActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_useridActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_useridActionPerformed
-
-    private void nemailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nemailActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_nemailActionPerformed
-
-    private void nemail1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nemail1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_nemail1ActionPerformed
-
-    private void nemail2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nemail2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_nemail2ActionPerformed
-
     private void enter1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_enter1MouseClicked
-        // TODO add your handling code here:
+        Adminpanel ap = new Adminpanel();
+        ap.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_enter1MouseClicked
 
     private void enter1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_enter1MouseEntered
@@ -301,7 +267,9 @@ public class Userinfo extends javax.swing.JFrame {
     }//GEN-LAST:event_enter1ActionPerformed
 
     private void enter2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_enter2MouseClicked
-        // TODO add your handling code here:
+        changeemail ce = new changeemail();
+        ce.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_enter2MouseClicked
 
     private void enter2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_enter2MouseEntered
@@ -317,7 +285,9 @@ public class Userinfo extends javax.swing.JFrame {
     }//GEN-LAST:event_enter2ActionPerformed
 
     private void enter3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_enter3MouseClicked
-        // TODO add your handling code here:
+     changecontact cc = new changecontact();
+     cc.setVisible(true);
+     this.dispose();
     }//GEN-LAST:event_enter3MouseClicked
 
     private void enter3MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_enter3MouseEntered
@@ -332,9 +302,22 @@ public class Userinfo extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_enter3ActionPerformed
 
-    private void userid1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userid1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_userid1ActionPerformed
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+        session sess = session.getInstance();
+       if(sess.getId()== 0){
+       JOptionPane.showMessageDialog(null,"No Account, Log in First");
+       loginform Adminpanel = new loginform();
+       Adminpanel.setVisible(true);
+       this.dispose();
+       }else{
+            name.setText(""+sess.getFname());
+            username.setText(""+sess.getUname());
+           userid1.setText(""+sess.getId());
+           nemail.setText(""+sess.getEmail());
+           cn.setText(""+sess.getContact());
+           pass.setText(""+sess.getPass());
+       }
+    }//GEN-LAST:event_formWindowActivated
 
     /**
      * @param args the command line arguments
@@ -375,19 +358,21 @@ public class Userinfo extends javax.swing.JFrame {
     private javax.swing.JLabel Fname;
     private javax.swing.JLabel Fname1;
     private javax.swing.JPanel backg3;
-    private javax.swing.JTextField email;
+    private javax.swing.JLabel cn;
     private javax.swing.JButton enter;
     private javax.swing.JButton enter1;
     private javax.swing.JButton enter2;
     private javax.swing.JButton enter3;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JLabel lname;
-    private javax.swing.JTextField nemail;
-    private javax.swing.JTextField nemail1;
-    private javax.swing.JTextField nemail2;
+    private javax.swing.JLabel name;
+    private javax.swing.JLabel name1;
+    private javax.swing.JLabel nemail;
+    private javax.swing.JLabel pass;
     private javax.swing.JLabel title2;
-    private javax.swing.JTextField userid;
-    private javax.swing.JTextField userid1;
+    private javax.swing.JLabel userid1;
+    private javax.swing.JLabel username;
+    private javax.swing.JLabel username1;
     private javax.swing.JLabel usertxt2;
     private javax.swing.JLabel usertxt3;
     private javax.swing.JLabel usertxt4;

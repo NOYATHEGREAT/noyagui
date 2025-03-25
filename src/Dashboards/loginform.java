@@ -43,12 +43,12 @@ public class loginform extends javax.swing.JFrame {
                     sess.setId(resultSet.getInt("u_id"));
                     sess.setFname(resultSet.getString("f_name"));
                     sess.setLname(resultSet.getString("last_name"));
-                   
                     sess.setUname(resultSet.getString("username"));
                     sess.setType(resultSet.getString("type"));
                     sess.setStatus(resultSet.getString("status_1"));
                      sess.setPass(resultSet.getString("pass"));
-                      
+                       sess.setEmail(resultSet.getString("email"));
+                        sess.setContact(resultSet.getString("phone_number"));
                     System.out.println(""+sess.getId());
                   return true;
                 }else{
