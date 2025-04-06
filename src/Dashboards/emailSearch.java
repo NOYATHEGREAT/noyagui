@@ -99,12 +99,7 @@ public class emailSearch extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
-       session sess = session.getInstance();
-       if(sess.getId() == 0){
-           System.out.println("0");
-        }else{
-            em.setText(""+sess.getId());
-        }  
+
     }//GEN-LAST:event_formWindowActivated
 
     private void jLabel9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel9MouseClicked
