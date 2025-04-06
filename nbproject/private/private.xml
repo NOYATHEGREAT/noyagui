@@ -2,24 +2,6 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/C:/Users/user/OneDrive/Desktop/noyagui/src/Dashboards/adduser.java</file>
-            <file>file:/C:/Users/user/OneDrive/Desktop/noyagui/src/user.png</file>
-            <file>file:/C:/Users/user/OneDrive/Desktop/noyagui/src/database/billpayments.sql</file>
-            <file>file:/C:/Users/user/OneDrive/Desktop/noyagui/src/user/userDashboard.java</file>
-            <file>file:/C:/Users/user/OneDrive/Desktop/noyagui/src/Dashboards/registrationform.java</file>
-            <file>file:/C:/Users/user/OneDrive/Desktop/noyagui/src/Dashboards/edituser.java</file>
-            <file>file:/C:/Users/user/OneDrive/Desktop/noyagui/src/config/passwordHasher.java</file>
-            <file>file:/C:/Users/user/OneDrive/Desktop/noyagui/src/Dashboards/Userpanel.java</file>
-            <file>file:/C:/Users/user/OneDrive/Desktop/noyagui/src/config/dbconn.java</file>
-            <file>file:/C:/Users/user/OneDrive/Desktop/noyagui/src/Dashboards/changecontact.java</file>
-            <file>file:/C:/Users/user/OneDrive/Desktop/noyagui/src/Dashboards/Adminsettings.java</file>
-            <file>file:/C:/Users/user/OneDrive/Desktop/noyagui/src/config/session.java</file>
-            <file>file:/C:/Users/user/OneDrive/Desktop/noyagui/src/Dashboards/Userinfo.java</file>
-            <file>file:/C:/Users/user/OneDrive/Desktop/noyagui/src/Dashboards/Adminpanel.java</file>
-            <file>file:/C:/Users/user/OneDrive/Desktop/noyagui/src/Dashboards/changepassword.java</file>
-            <file>file:/C:/Users/user/OneDrive/Desktop/noyagui/src/Dashboards/changeemail.java</file>
-            <file>file:/C:/Users/user/OneDrive/Desktop/noyagui/src/Dashboards/loginform.java</file>
-        </group>
+        <group/>
     </open-files>
 </project-private>

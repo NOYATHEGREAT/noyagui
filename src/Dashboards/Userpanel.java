@@ -28,17 +28,18 @@ public class Userpanel extends javax.swing.JFrame {
     }
      Color orange = new Color(255,102,0);
      Color lightorange = new Color(255,204,102);
-  public void displayUsers(){
-       
-        try{
-            dbconn db = new dbconn();
-        ResultSet rs = db.getData("SELECT * FROM tbl_users");
-        tbl_users.setModel(DbUtils.resultSetToTableModel(rs));
-        rs.close();
-        }catch(SQLException e){
-            System.out.println("Erros: "+e.getMessage());
-        }
 
+    
+    public void displayUsers() {
+        try {
+            dbconn db = new dbconn();
+            ResultSet rs = db.getData(
+                "SELECT u_id, f_name, last_name, username, email, phone_number, type, status_1 FROM tbl_users");
+            tbl_users.setModel(DbUtils.resultSetToTableModel(rs));
+            rs.close();
+        } catch (SQLException e) {
+            System.out.println("Error: " + e.getMessage());
+        }
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -306,12 +307,24 @@ public class Userpanel extends javax.swing.JFrame {
               uf.fname.setText(""+rs.getString("f_name"));
               uf.lastname.setText(""+rs.getString("last_name"));
                uf.email.setText(""+rs.getString("email"));
-               uf.ph.setText(""+rs.getString("phone_number"));
-               uf.type1.setSelectedItem(""+rs.getString("type"));
+               uf.con.setText(""+rs.getString("phone_number"));
+               uf.type.setSelectedItem(""+rs.getString("type"));
                uf.pass.setText(""+rs.getString("pass"));
                 uf.status.setSelectedItem(""+rs.getString("status_1"));
-               uf.setVisible(true);
-              this.dispose();
+                uf.image.setIcon(uf.ResizeImage(rs.getString("image"), null, uf.image));
+                    uf.oldpath = rs.getString("image");
+                    uf.path = rs.getString("image");
+                    uf.destination = rs.getString("image");
+                    
+                if(rs.getString("image").isEmpty()){
+                    uf.select.setEnabled(true);
+                    uf.rm.setEnabled(false);
+                }else{
+                    uf.select.setEnabled(false);
+                    uf.rm.setEnabled(true);
+                }
+                    uf.setVisible(true);
+                    this.dispose();
           }
          }catch(SQLException e){
                        System.out.println(""+e.getMessage());
@@ -325,31 +338,22 @@ public class Userpanel extends javax.swing.JFrame {
     }//GEN-LAST:event_deleteMouseClicked
 
     private void delete1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_delete1MouseClicked
-       
-    int response = JOptionPane.showConfirmDialog(this, "Are you sure you want to delete this user?", 
-                                                  "Confirm Deletion", JOptionPane.YES_NO_OPTION);
-    
-    if (response == JOptionPane.YES_OPTION) {
-        
-        boolean isDeleted = deleteUserFromDatabase(); 
-
-        if (isDeleted) {
-            
-            JOptionPane.showMessageDialog(this, "User deleted successfully.");
-            
-            
+        int rowindex = tbl_users.getSelectedRow();
+        if(rowindex < 0){
+            JOptionPane.showMessageDialog(null, "Please Select an item!");
         } else {
-            
-            JOptionPane.showMessageDialog(this, "Error deleting user. Please try again.");
+            int confirm = JOptionPane.showConfirmDialog(null, "Are you sure you want to delete this user?", "Confirm Deletion", JOptionPane.YES_NO_OPTION);
+            if (confirm == JOptionPane.YES_OPTION) {
+                dbconn dbc = new dbconn();
+                TableModel model = tbl_users.getModel();
+                String id = model.getValueAt(rowindex, 0).toString();
+                dbc.updateData("DELETE FROM tbl_users WHERE u_id = '" + id + "'");
+                session sess = session.getInstance();
+                dbc.logActivity(sess.getId(), "Deleted user ID: " + id);
+                displayUsers();
+                JOptionPane.showMessageDialog(null, "User deleted successfully!");
+            }
         }
-    }
-}
-
-
-   private boolean deleteUserFromDatabase() {
-   
-    return true; 
-
     }//GEN-LAST:event_delete1MouseClicked
 
     private void addpMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addpMouseExited

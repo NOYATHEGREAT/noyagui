@@ -26,15 +26,10 @@ public class loginform extends javax.swing.JFrame {
             ResultSet resultSet = db.getData(query);
            
             if(resultSet.next()){
-            
-                
-                
+
                 String hashedPasss = resultSet.getString("pass");
                 String rehashedPass = passwordHasher.hashPassword(password);
-                
-                
-                System.out.println(""+hashedPasss);
-                System.out.println(""+rehashedPass);
+
                 if(hashedPasss.equals(rehashedPass)){
                 status1 = resultSet.getString("status_1");
                 type1 = resultSet.getString("type");
@@ -46,10 +41,9 @@ public class loginform extends javax.swing.JFrame {
                     sess.setUname(resultSet.getString("username"));
                     sess.setType(resultSet.getString("type"));
                     sess.setStatus(resultSet.getString("status_1"));
-                     sess.setPass(resultSet.getString("pass"));
-                       sess.setEmail(resultSet.getString("email"));
-                        sess.setContact(resultSet.getString("phone_number"));
-                    System.out.println(""+sess.getId());
+                    sess.setPass(resultSet.getString("pass"));
+                    sess.setEmail(resultSet.getString("email"));
+                    sess.setContact(resultSet.getString("phone_number"));
                   return true;
                 }else{
                     System.out.println("Password does not match!!");
@@ -77,7 +71,7 @@ public class loginform extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         bodycolor = new javax.swing.JPanel();
         title1 = new javax.swing.JLabel();
-        usertxt1 = new javax.swing.JLabel();
+        usertxt2 = new javax.swing.JLabel();
         username = new javax.swing.JTextField();
         passtxt1 = new javax.swing.JLabel();
         pass = new javax.swing.JPasswordField();
@@ -85,6 +79,7 @@ public class loginform extends javax.swing.JFrame {
         header = new javax.swing.JLabel();
         loginbtm1 = new javax.swing.JButton();
         createbtm = new javax.swing.JButton();
+        usertxt1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -107,9 +102,9 @@ public class loginform extends javax.swing.JFrame {
         title1.setText("        BAYAD TA!");
         bodycolor.add(title1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, 390, 60));
 
-        usertxt1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        usertxt1.setText("USERNAME");
-        bodycolor.add(usertxt1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 240, 80, -1));
+        usertxt2.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        usertxt2.setText("USERNAME");
+        bodycolor.add(usertxt2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 240, 80, -1));
 
         username.setBackground(new java.awt.Color(255, 204, 102));
         username.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
@@ -185,6 +180,15 @@ public class loginform extends javax.swing.JFrame {
         });
         bgorange.add(createbtm, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 480, 230, 40));
 
+        usertxt1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        usertxt1.setText("Forgot Password? Click here");
+        usertxt1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                usertxt1MouseClicked(evt);
+            }
+        });
+        bgorange.add(usertxt1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 350, 230, 30));
+
         bodycolor.add(bgorange, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, 390, 560));
 
         jPanel4.add(bodycolor, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 0, 440, 610));
@@ -237,40 +241,44 @@ public class loginform extends javax.swing.JFrame {
 
     private void loginbtm1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loginbtm1MouseClicked
    
-                 if (username.getText().isEmpty() && pass.getText().isEmpty()) {
-    JOptionPane.showMessageDialog(null, "Please put username and password");
-} else if (username.getText().isEmpty()) {
-    JOptionPane.showMessageDialog(null, "Please enter your username.");
-} else if (pass.getText().isEmpty()) {
-    JOptionPane.showMessageDialog(null, "Please enter your password.");
-} else {
-    if (loginAccount(username.getText(), pass.getText())) {
-        if (!status1.equals("Active")) {
-            JOptionPane.showMessageDialog(null, "Your account is not active, Please wait for a few minutes...");
-        } else {
-            System.out.println("Log in Account");
-            if (type1.equals("Admin")) {
-                Adminpanel ad = new Adminpanel();
-                ad.setVisible(true);
-                this.dispose();
-            } else if (type1.equals("User")) {
-                userDashboard ad = new userDashboard();
-                ad.setVisible(true);
-                this.dispose();
-            } else {
-                JOptionPane.showMessageDialog(null, "No account type found!");
-            }
-        }
+    if (username.getText().isEmpty() && pass.getText().isEmpty()) {
+        JOptionPane.showMessageDialog(null, "Please put username and password");
+    } else if (username.getText().isEmpty()) {
+        JOptionPane.showMessageDialog(null, "Please enter your username.");
+    } else if (pass.getText().isEmpty()) {
+        JOptionPane.showMessageDialog(null, "Please enter your password.");
     } else {
-        JOptionPane.showMessageDialog(null, "Invalid username or password!");
-    }
-}
-
-             
-
-             
-                
+        if (loginAccount(username.getText(), pass.getText())) {
+            if (!status1.equals("Active")) {
+                JOptionPane.showMessageDialog(null, "Your account is not active, Please wait for a few minutes...");
+            } else {
+                if (type1.equals("Admin")) {
+                    dbconn db = new dbconn();
+                    session sess = session.getInstance();
+                    db.logActivity(sess.getId(), "User Login: " + sess.getLname());
+                    JOptionPane.showMessageDialog(null, "Login Successfully!");
+                    Adminpanel ad = new Adminpanel();
+                    ad.setVisible(true);
+                    this.dispose();
+                } else if (type1.equals("User")) {
+                    userDashboard ad = new userDashboard();
+                    ad.setVisible(true);
+                    this.dispose();
+                } else {
+                    JOptionPane.showMessageDialog(null, "No account type found!");
+                }
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Invalid username or password!");
+        }
+    }              
     }//GEN-LAST:event_loginbtm1MouseClicked
+
+    private void usertxt1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_usertxt1MouseClicked
+        emailSearch es = new emailSearch();
+        es.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_usertxt1MouseClicked
 
     /**
      * @param args the command line arguments
@@ -321,5 +329,6 @@ public class loginform extends javax.swing.JFrame {
     private javax.swing.JLabel title1;
     private javax.swing.JTextField username;
     private javax.swing.JLabel usertxt1;
+    private javax.swing.JLabel usertxt2;
     // End of variables declaration//GEN-END:variables
 }

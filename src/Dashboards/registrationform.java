@@ -19,6 +19,9 @@ public class registrationform extends javax.swing.JFrame {
     public registrationform() {
         initComponents();
     }
+    public String question = "";
+    public String answer = "";
+    public String destination = "";
     public static String email1,username1;
     
      public boolean duplicateChecker() {
@@ -337,9 +340,9 @@ public class registrationform extends javax.swing.JFrame {
         }else if(type.getSelectedIndex() == 0){
             JOptionPane.showMessageDialog(null, "Please select a type of user");
         }
-        else if (db.insertData("INSERT INTO tbl_users (f_name, last_name, username, email, phone_number, pass, type , status_1) "
+        else if (db.insertData("INSERT INTO tbl_users (f_name, last_name, username, email, phone_number, pass, type , status_1, question, answer, image) "
                 + "VALUES ('"+fname.getText()+"', '"+lastname.getText()+"', '"+username.getText()+"', '"+email.getText()+"', "
-                        + "'"+ph.getText()+"', '"+pass1+"','"+type.getSelectedItem()+"' ,'Pending')") == 1){
+                        + "'"+ph.getText()+"', '"+pass1+"','"+type.getSelectedItem()+"' ,'Pending', '"+question+"', '"+answer+"', '"+destination+"')") == 1){
             JOptionPane.showMessageDialog(null, "Submitted Successfully");
              loginform lf = new loginform();
             lf.setVisible(true);

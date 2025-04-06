@@ -1,14 +1,30 @@
 
 package Dashboards;
+import config.dbconn;
 import config.session;
 import java.awt.Color;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import javax.swing.JOptionPane;
+import net.proteanit.sql.DbUtils;
 
 public class Adminpanel extends javax.swing.JFrame {
 
    
     public Adminpanel() {
         initComponents();
+        displayLogs();
+    }
+    
+        public void displayLogs() {
+        try {
+            dbconn db = new dbconn();
+            ResultSet rs = db.getLogs();
+            table_user.setModel(DbUtils.resultSetToTableModel(rs));
+            rs.close();
+        } catch(SQLException e) {
+            System.out.println("Error loading logs: "+e.getMessage());
+        }
     }
     Color orange = new Color(255,102,0);
     Color lightorange = new Color(255,204,102);
@@ -40,11 +56,14 @@ public class Adminpanel extends javax.swing.JFrame {
         usertxt5 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        table_user = new javax.swing.JTable();
+        logs = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         acc_id = new javax.swing.JLabel();
         acc_name = new javax.swing.JLabel();
-        acc_lname = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
+        acc_lname1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -228,6 +247,26 @@ public class Adminpanel extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(255, 102, 0));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        table_user.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {},
+                {},
+                {},
+                {}
+            },
+            new String [] {
+
+            }
+        ));
+        jScrollPane2.setViewportView(table_user);
+
+        jPanel2.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, 630, 320));
+
+        logs.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
+        logs.setText("Activity Logs");
+        jPanel2.add(logs, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 160, 20));
+
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 90, 660, 480));
 
         jPanel3.setBackground(new java.awt.Color(255, 102, 0));
@@ -242,13 +281,13 @@ public class Adminpanel extends javax.swing.JFrame {
         acc_name.setText(" ADMIN");
         jPanel3.add(acc_name, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 90, 20));
 
-        acc_lname.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
-        acc_lname.setText(" ADMIN");
-        jPanel3.add(acc_lname, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 10, 90, 20));
-
         jLabel7.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
         jLabel7.setText("ID:");
         jPanel3.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 30, 20));
+
+        acc_lname1.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
+        acc_lname1.setText(" ADMIN");
+        jPanel3.add(acc_lname1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 10, 90, 20));
 
         jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 10, 660, 70));
 
@@ -360,7 +399,7 @@ public class Adminpanel extends javax.swing.JFrame {
        this.dispose();
        }else{
             acc_name.setText(""+sess.getFname());
-            acc_lname.setText(""+sess.getLname());
+            acc_lname1.setText(""+sess.getLname());
             acc_id.setText(""+sess.getId());
        }
     }//GEN-LAST:event_formWindowActivated
@@ -369,14 +408,14 @@ public class Adminpanel extends javax.swing.JFrame {
        int choice = JOptionPane.showConfirmDialog(null, "Do you want to log out?", "Logout Confirmation!",
         JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
 
-if (choice == JOptionPane.YES_OPTION) {
-   
-   
-
-    loginform lf = new loginform();
-    lf.setVisible(true);
-    this.dispose();
-}
+    if (choice == JOptionPane.YES_OPTION) {
+        dbconn db = new dbconn();
+        session sess = session.getInstance();
+        db.logActivity(sess.getId(), "User Logout: " + sess.getLname());
+        loginform lf = new loginform();
+        lf.setVisible(true);
+        this.dispose();
+    }
     }//GEN-LAST:event_usertxt5MouseClicked
 
     private void usertxt5MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_usertxt5MouseEntered
@@ -424,7 +463,7 @@ if (choice == JOptionPane.YES_OPTION) {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel acc_id;
-    private javax.swing.JLabel acc_lname;
+    private javax.swing.JLabel acc_lname1;
     private javax.swing.JLabel acc_name;
     private javax.swing.JPanel dashpanel;
     private javax.swing.JLabel jLabel17;
@@ -437,7 +476,10 @@ if (choice == JOptionPane.YES_OPTION) {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel8;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JLabel logs;
     private javax.swing.JPanel setpanel;
+    private javax.swing.JTable table_user;
     private javax.swing.JPanel transpanel;
     private javax.swing.JPanel userbtm;
     private javax.swing.JPanel userbtm1;

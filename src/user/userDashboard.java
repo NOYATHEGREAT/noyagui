@@ -45,10 +45,12 @@ public class userDashboard extends javax.swing.JFrame {
         jLabel19 = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
         jLabel20 = new javax.swing.JLabel();
-        jPanel7 = new javax.swing.JPanel();
+        set = new javax.swing.JPanel();
         jLabel21 = new javax.swing.JLabel();
         jPanel8 = new javax.swing.JPanel();
         jLabel18 = new javax.swing.JLabel();
+        jPanel9 = new javax.swing.JPanel();
+        jLabel22 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
 
@@ -125,20 +127,31 @@ public class userDashboard extends javax.swing.JFrame {
 
         jPanel4.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 290, 170, 50));
 
-        jPanel7.setBackground(new java.awt.Color(255, 102, 0));
-        jPanel7.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        set.setBackground(new java.awt.Color(255, 102, 0));
+        set.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                setMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                setMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                setMouseExited(evt);
+            }
+        });
+        set.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel21.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
         jLabel21.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel21.setText("TRANSACTION");
+        jLabel21.setText("SETTINGS");
         jLabel21.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel21MouseClicked(evt);
             }
         });
-        jPanel7.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 170, 40));
+        set.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 170, 40));
 
-        jPanel4.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 360, 170, 60));
+        jPanel4.add(set, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 430, 170, 60));
 
         jPanel8.setBackground(new java.awt.Color(255, 102, 0));
         jPanel8.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -153,7 +166,22 @@ public class userDashboard extends javax.swing.JFrame {
         });
         jPanel8.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 170, 40));
 
-        jPanel4.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 440, 170, 60));
+        jPanel4.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 500, 170, 60));
+
+        jPanel9.setBackground(new java.awt.Color(255, 102, 0));
+        jPanel9.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel22.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
+        jLabel22.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel22.setText("TRANSACTION");
+        jLabel22.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel22MouseClicked(evt);
+            }
+        });
+        jPanel9.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 170, 40));
+
+        jPanel4.add(jPanel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 360, 170, 60));
 
         jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 170, 560));
 
@@ -189,29 +217,47 @@ public class userDashboard extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jLabel18MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel18MouseClicked
-       
-    }//GEN-LAST:event_jLabel18MouseClicked
-
-    private void userbtmMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_userbtmMouseEntered
-        userbtm.setBackground(lightorange);
-    }//GEN-LAST:event_userbtmMouseEntered
-
-    private void userbtmMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_userbtmMouseExited
-        userbtm.setBackground(orange);
-    }//GEN-LAST:event_userbtmMouseExited
-
-    private void jLabel19MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel19MouseClicked
+    private void jLabel22MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel22MouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_jLabel19MouseClicked
+    }//GEN-LAST:event_jLabel22MouseClicked
+
+    private void jLabel18MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel18MouseClicked
+
+    }//GEN-LAST:event_jLabel18MouseClicked
 
     private void jLabel20MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel20MouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_jLabel20MouseClicked
 
+    private void userbtmMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_userbtmMouseExited
+        userbtm.setBackground(orange);
+    }//GEN-LAST:event_userbtmMouseExited
+
+    private void userbtmMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_userbtmMouseEntered
+        userbtm.setBackground(lightorange);
+    }//GEN-LAST:event_userbtmMouseEntered
+
+    private void jLabel19MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel19MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel19MouseClicked
+
+    private void setMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_setMouseClicked
+        Userinfo uf = new Userinfo();
+        uf.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_setMouseClicked
+
     private void jLabel21MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel21MouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_jLabel21MouseClicked
+
+    private void setMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_setMouseEntered
+        set.setBackground(lightorange);
+    }//GEN-LAST:event_setMouseEntered
+
+    private void setMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_setMouseExited
+        set.setBackground(orange);
+    }//GEN-LAST:event_setMouseExited
 
     /**
      * @param args the command line arguments
@@ -255,6 +301,7 @@ public class userDashboard extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JList<String> jList1;
@@ -264,9 +311,10 @@ public class userDashboard extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
-    private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
+    private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JPanel set;
     private javax.swing.JPanel userbtm;
     // End of variables declaration//GEN-END:variables
 }
