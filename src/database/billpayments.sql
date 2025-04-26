@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 06, 2025 at 06:23 AM
+-- Generation Time: Apr 26, 2025 at 04:41 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -20,6 +20,21 @@ SET time_zone = "+00:00";
 --
 -- Database: `billpayments`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_bill`
+--
+
+CREATE TABLE `tbl_bill` (
+  `u_id` int(11) NOT NULL,
+  `u_name` varchar(255) NOT NULL,
+  `b_amount` decimal(11,0) NOT NULL,
+  `b_descrip` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `b_status` varchar(255) CHARACTER SET utf32 COLLATE utf32_general_ci NOT NULL,
+  `b_date` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -53,7 +68,9 @@ INSERT INTO `tbl_logs` (`log_id`, `log_uid`, `log_action`, `log_timestamp`) VALU
 (22, 11, 'Deleted user ID: 14', '2025-04-06 03:59:05'),
 (23, 11, 'User Logout: Laluna', '2025-04-06 04:00:05'),
 (24, 13, 'User Login: Noya', '2025-04-06 04:05:12'),
-(25, 13, 'Deleted user ID: 14', '2025-04-06 04:05:22');
+(25, 13, 'Deleted user ID: 14', '2025-04-06 04:05:22'),
+(26, 16, 'User Login: KOE', '2025-04-26 13:41:23'),
+(27, 16, 'User Logout: KOE', '2025-04-26 13:41:46');
 
 -- --------------------------------------------------------
 
@@ -84,11 +101,18 @@ INSERT INTO `tbl_users` (`u_id`, `f_name`, `last_name`, `username`, `email`, `ph
 (11, 'Ivan', 'Laluna', 'ivan12', 'ivan@ivan.com', '12345678902', 'wwGTrEWyqV6TCnqBqHxi4rtLUVc5sND49E18gPdyCWQ=', 'Active', 'Admin', '', '', ''),
 (12, 'Karl', 'Campoy', 'campoy12', 'campoy@campoy.com', '12345678901', 'DRMq8/pzj2GubAGvMUBmNDWzx7fpCVfUbXh+p7//Bi0=', 'Active', 'User', 'What is your fav color?', 'red', ''),
 (13, 'John Lloyd', 'Noya', 'noya12', 'noya@noya.com', '12345678901', 'iHu1c60hflgmU+6hR9PEXHxXOGsh6OacjeWhsYgcvvc=', 'Active', 'Admin', '', '', ''),
-(15, 'Chrtistian', 'Yongzon', 'yannie', 'yannie@yannie.com', '12345678901', 'vb+Lf8PZzEf13tvD4KTklPFS7hbpRgyzUQ0VQTSylEI=', 'Pending', 'User', '', '', '');
+(15, 'Chrtistian', 'Yongzon', 'yannie', 'yannie@yannie.com', '12345678901', 'vb+Lf8PZzEf13tvD4KTklPFS7hbpRgyzUQ0VQTSylEI=', 'Pending', 'User', '', '', ''),
+(16, 'GWAPO', 'KOE', 'gwapokoe', 'gwapokoe123@gmail.com', '12345678914', 'ky88G1YlfOhTmsJp16q0JVDaz4gY0HXwvfGZBWKq4+8=', 'Active', 'Admin', '', '', '');
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `tbl_bill`
+--
+ALTER TABLE `tbl_bill`
+  ADD PRIMARY KEY (`u_id`);
 
 --
 -- Indexes for table `tbl_logs`
@@ -108,16 +132,22 @@ ALTER TABLE `tbl_users`
 --
 
 --
+-- AUTO_INCREMENT for table `tbl_bill`
+--
+ALTER TABLE `tbl_bill`
+  MODIFY `u_id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `tbl_logs`
 --
 ALTER TABLE `tbl_logs`
-  MODIFY `log_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `log_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT for table `tbl_users`
 --
 ALTER TABLE `tbl_users`
-  MODIFY `u_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `u_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- Constraints for dumped tables
