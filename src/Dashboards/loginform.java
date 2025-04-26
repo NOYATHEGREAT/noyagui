@@ -160,7 +160,7 @@ public class loginform extends javax.swing.JFrame {
         bgorange.add(loginbtm1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 420, 140, 40));
 
         createbtm.setBackground(new java.awt.Color(255, 255, 255));
-        createbtm.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        createbtm.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         createbtm.setText("CREATE ACCOUNT");
         createbtm.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {

@@ -41,10 +41,9 @@ public class SecurityQ extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         ans = new javax.swing.JTextField();
-        ques1 = new javax.swing.JTextField();
-        jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         uid = new javax.swing.JTextField();
+        jPanel2 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(0, 0, 0));
@@ -62,25 +61,29 @@ public class SecurityQ extends javax.swing.JFrame {
         jPanel1.setPreferredSize(new java.awt.Dimension(617, 488));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel8.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel8.setText("Question:");
-        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 150, 73, -1));
-        jPanel1.add(ques, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 180, 276, 28));
+        jLabel8.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel8.setText("QUESTION");
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 170, 73, -1));
 
-        jButton1.setText("Add");
+        ques.setBackground(new java.awt.Color(255, 204, 102));
+        ques.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
+        jPanel1.add(ques, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 190, 276, 40));
+
+        jButton1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jButton1.setText("ADD");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 280, 120, 30));
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 320, 80, 40));
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setText("SECURITY QUESTION");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 190, 43));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 400, 43));
 
-        jLabel9.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLabel9.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel9.setText("BACK");
         jLabel9.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -88,24 +91,33 @@ public class SecurityQ extends javax.swing.JFrame {
                 jLabel9MouseClicked(evt);
             }
         });
-        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 420, 80, 26));
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 380, 80, 26));
 
-        jLabel10.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel10.setText("Answer:");
-        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 210, 73, -1));
-        jPanel1.add(ans, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 240, 276, 28));
-        jPanel1.add(ques1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 180, 276, 28));
+        jLabel10.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel10.setText("ANSWER");
+        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 240, 73, -1));
 
-        jLabel11.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel11.setText("Question:");
-        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 150, 73, -1));
+        ans.setBackground(new java.awt.Color(255, 204, 102));
+        ans.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
+        jPanel1.add(ans, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 260, 276, 40));
 
-        jLabel12.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel12.setText("Current User ID:");
-        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 80, 100, -1));
+        jLabel12.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel12.setText("CURRENT USER ID");
+        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 100, 140, -1));
 
+        uid.setBackground(new java.awt.Color(255, 204, 102));
+        uid.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
         uid.setEnabled(false);
-        jPanel1.add(uid, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 110, 276, 28));
+        uid.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                uidActionPerformed(evt);
+            }
+        });
+        jPanel1.add(uid, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 120, 276, 40));
+
+        jPanel2.setBackground(new java.awt.Color(255, 102, 0));
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, 340, 390));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 410, 450));
 
@@ -144,6 +156,10 @@ public class SecurityQ extends javax.swing.JFrame {
                             this.dispose();
         }
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void uidActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_uidActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_uidActionPerformed
 
     /**
      * @param args the command line arguments
@@ -247,14 +263,13 @@ public class SecurityQ extends javax.swing.JFrame {
     private javax.swing.JTextField ans;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JTextField ques;
-    private javax.swing.JTextField ques1;
     private javax.swing.JTextField uid;
     // End of variables declaration//GEN-END:variables
 }
