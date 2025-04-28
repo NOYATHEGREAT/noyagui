@@ -8,12 +8,14 @@ import java.sql.SQLException;
 import javax.swing.JOptionPane;
 import net.proteanit.sql.DbUtils;
 
+
 public class Adminpanel extends javax.swing.JFrame {
 
    
     public Adminpanel() {
         initComponents();
         displayLogs();
+        updateDashboardCounts();
     }
     
         public void displayLogs() {
@@ -26,6 +28,25 @@ public class Adminpanel extends javax.swing.JFrame {
             System.out.println("Error loading logs: "+e.getMessage());
         }
     }
+        private void updateDashboardCounts() {
+    try {
+        dbconn db = new dbconn();
+
+        // Get counts from database
+        int activeusers = db.getActiveUsersCount();
+        int totalUser = db.getCount("tbl_users");
+
+        // Update dashboard labels (assuming activeuser and totaluser are JLabel components)
+        activeuser.setText(String.valueOf(activeusers));
+        totaluser.setText(String.valueOf(totalUser));
+
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(this, 
+            "Error loading dashboard data: " + e.getMessage(), 
+            "Error", JOptionPane.ERROR_MESSAGE);
+    }
+}
+
     Color orange = new Color(255,102,0);
     Color lightorange = new Color(255,204,102);
     
@@ -58,7 +79,13 @@ public class Adminpanel extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         table_user = new javax.swing.JTable();
+        jPanel5 = new javax.swing.JPanel();
+        logs2 = new javax.swing.JLabel();
+        activeuser = new javax.swing.JLabel();
+        jPanel6 = new javax.swing.JPanel();
         logs = new javax.swing.JLabel();
+        totaluser = new javax.swing.JLabel();
+        logs1 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         acc_id = new javax.swing.JLabel();
         acc_name = new javax.swing.JLabel();
@@ -248,6 +275,7 @@ public class Adminpanel extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(255, 102, 0));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        table_user.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
         table_user.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {},
@@ -261,11 +289,42 @@ public class Adminpanel extends javax.swing.JFrame {
         ));
         jScrollPane2.setViewportView(table_user);
 
-        jPanel2.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, 630, 320));
+        jPanel2.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 170, 640, 300));
 
-        logs.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
-        logs.setText("Activity Logs");
-        jPanel2.add(logs, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 160, 20));
+        jPanel5.setBackground(new java.awt.Color(255, 204, 102));
+        jPanel5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
+        jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        logs2.setFont(new java.awt.Font("Arial Black", 1, 14)); // NOI18N
+        logs2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        logs2.setText("ACTIVE USERS");
+        jPanel5.add(logs2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 250, 20));
+
+        activeuser.setFont(new java.awt.Font("Arial", 0, 36)); // NOI18N
+        activeuser.setText("0");
+        jPanel5.add(activeuser, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 20, -1, -1));
+
+        jPanel2.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 30, 250, 100));
+
+        jPanel6.setBackground(new java.awt.Color(255, 204, 102));
+        jPanel6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
+        jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        logs.setFont(new java.awt.Font("Arial Black", 1, 14)); // NOI18N
+        logs.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        logs.setText("TOTAL USERS");
+        logs.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jPanel6.add(logs, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 260, 20));
+
+        totaluser.setFont(new java.awt.Font("Arial", 0, 36)); // NOI18N
+        totaluser.setText("0");
+        jPanel6.add(totaluser, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 20, -1, -1));
+
+        jPanel2.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 30, 260, 100));
+
+        logs1.setFont(new java.awt.Font("Arial Black", 1, 14)); // NOI18N
+        logs1.setText("ACTIVITY LOGS");
+        jPanel2.add(logs1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, 200, 20));
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 90, 660, 480));
 
@@ -465,6 +524,7 @@ public class Adminpanel extends javax.swing.JFrame {
     private javax.swing.JLabel acc_id;
     private javax.swing.JLabel acc_lname1;
     private javax.swing.JLabel acc_name;
+    private javax.swing.JLabel activeuser;
     private javax.swing.JPanel dashpanel;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel2;
@@ -475,11 +535,16 @@ public class Adminpanel extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel logs;
+    private javax.swing.JLabel logs1;
+    private javax.swing.JLabel logs2;
     private javax.swing.JPanel setpanel;
     private javax.swing.JTable table_user;
+    private javax.swing.JLabel totaluser;
     private javax.swing.JPanel transpanel;
     private javax.swing.JPanel userbtm;
     private javax.swing.JPanel userbtm1;
