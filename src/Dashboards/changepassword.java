@@ -41,6 +41,7 @@ public class changepassword extends javax.swing.JFrame {
         usertxt2 = new javax.swing.JLabel();
         id = new javax.swing.JLabel();
         changepass = new javax.swing.JLabel();
+        update1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -74,7 +75,7 @@ public class changepassword extends javax.swing.JFrame {
                 updateActionPerformed(evt);
             }
         });
-        backg3.add(update, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 330, 120, 40));
+        backg3.add(update, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 320, 120, 40));
 
         cpass.setBackground(new java.awt.Color(255, 204, 102));
         cpass.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
@@ -87,11 +88,11 @@ public class changepassword extends javax.swing.JFrame {
         backg3.add(cpass, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 170, 280, 40));
 
         lname.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        lname.setText("CURRENT PASS");
-        backg3.add(lname, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 150, 110, -1));
+        lname.setText("Current Password:");
+        backg3.add(lname, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 150, 140, -1));
 
         Fname.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        Fname.setText("CURRENT USER ID");
+        Fname.setText("Current User ID:");
         backg3.add(Fname, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 80, 130, -1));
 
         npass.setBackground(new java.awt.Color(255, 204, 102));
@@ -110,7 +111,7 @@ public class changepassword extends javax.swing.JFrame {
         backg3.add(title2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 450, 60));
 
         usertxt2.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        usertxt2.setText("NEWPASSWORD");
+        usertxt2.setText("New Password:");
         backg3.add(usertxt2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 220, 120, -1));
 
         id.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
@@ -127,6 +128,27 @@ public class changepassword extends javax.swing.JFrame {
             }
         });
         backg3.add(changepass, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 290, 240, 29));
+
+        update1.setBackground(new java.awt.Color(255, 255, 255));
+        update1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        update1.setText("BACK");
+        update1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                update1MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                update1MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                update1MouseExited(evt);
+            }
+        });
+        update1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                update1ActionPerformed(evt);
+            }
+        });
+        backg3.add(update1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 320, 120, 40));
 
         jPanel2.add(backg3, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 40, 460, 410));
 
@@ -280,6 +302,24 @@ public class changepassword extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_changepassMouseClicked
 
+    private void update1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_update1MouseClicked
+        Userinfo ui = new Userinfo();
+        ui.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_update1MouseClicked
+
+    private void update1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_update1MouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_update1MouseEntered
+
+    private void update1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_update1MouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_update1MouseExited
+
+    private void update1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_update1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_update1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -326,6 +366,7 @@ public class changepassword extends javax.swing.JFrame {
     private javax.swing.JTextField npass;
     private javax.swing.JLabel title2;
     private javax.swing.JButton update;
+    private javax.swing.JButton update1;
     private javax.swing.JLabel usertxt2;
     // End of variables declaration//GEN-END:variables
 }

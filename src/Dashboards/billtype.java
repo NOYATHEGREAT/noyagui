@@ -3,13 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package user;
+package Dashboards;
 
 import config.dbconn;
+import config.session;
 import java.awt.Color;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import net.proteanit.sql.DbUtils;
 
@@ -17,16 +19,17 @@ import net.proteanit.sql.DbUtils;
  *
  * @author user
  */
-public class payments extends javax.swing.JFrame {
+public class billtype extends javax.swing.JFrame {
 
-    /**
-     * Creates new form payments
-     */
-    public payments() {
+   
+     
+    public billtype() {
         initComponents();
         displayBill();
+        displayBillTypes();
     }
- public void displayBill() {
+     
+    public void displayBill() {
         try {
             dbconn db = new dbconn();
             ResultSet rs = db.getData(
@@ -37,6 +40,28 @@ public class payments extends javax.swing.JFrame {
             System.out.println("Error: " + e.getMessage());
         }
     }
+    public void displayBillTypes() {
+    dbconn db = new dbconn();
+    DefaultTableModel model = (DefaultTableModel) tbl_bill.getModel();
+    model.setRowCount(0); // clear current rows
+
+    try {
+        ResultSet rs = db.getData("SELECT * FROM bill_type");
+        while (rs.next()) {
+            Object[] row = {
+                rs.getString("bill_id"),
+                rs.getString("bill_name"),
+                rs.getString("company"),
+                rs.getString("description")
+            };
+            model.addRow(row);
+        }
+    } catch (Exception e) {
+        e.printStackTrace();
+        JOptionPane.showMessageDialog(null, "Error loading bill types.");
+    }
+}
+
  Color orange = new Color(255,102,0);
      Color lightorange = new Color(255,204,102);
     /**
@@ -51,7 +76,13 @@ public class payments extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         addp = new javax.swing.JPanel();
-        pay = new javax.swing.JLabel();
+        add = new javax.swing.JLabel();
+        editp = new javax.swing.JPanel();
+        edit = new javax.swing.JLabel();
+        refp = new javax.swing.JPanel();
+        delete = new javax.swing.JLabel();
+        delp = new javax.swing.JPanel();
+        delete1 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         id = new javax.swing.JLabel();
@@ -84,17 +115,82 @@ public class payments extends javax.swing.JFrame {
         });
         addp.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        pay.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
-        pay.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        pay.setText("PAY");
-        pay.addMouseListener(new java.awt.event.MouseAdapter() {
+        add.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
+        add.setText("         ADD");
+        add.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                payMouseClicked(evt);
+                addMouseClicked(evt);
             }
         });
-        addp.add(pay, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 170, 20));
+        addp.add(add, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 170, 20));
 
         jPanel4.add(addp, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 150, 170, 60));
+
+        editp.setBackground(new java.awt.Color(255, 102, 0));
+        editp.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                editpMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                editpMouseExited(evt);
+            }
+        });
+        editp.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        edit.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
+        edit.setText("         EDIT");
+        edit.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                editMouseClicked(evt);
+            }
+        });
+        editp.add(edit, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 170, 20));
+
+        jPanel4.add(editp, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 220, 170, 60));
+
+        refp.setBackground(new java.awt.Color(255, 102, 0));
+        refp.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                refpMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                refpMouseExited(evt);
+            }
+        });
+        refp.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        delete.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
+        delete.setText("     REFRESH");
+        delete.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                deleteMouseClicked(evt);
+            }
+        });
+        refp.add(delete, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 170, -1));
+
+        jPanel4.add(refp, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 370, 170, 60));
+
+        delp.setBackground(new java.awt.Color(255, 102, 0));
+        delp.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                delpMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                delpMouseExited(evt);
+            }
+        });
+        delp.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        delete1.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
+        delete1.setText("       DELETE");
+        delete1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                delete1MouseClicked(evt);
+            }
+        });
+        delp.add(delete1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 170, -1));
+
+        jPanel4.add(delp, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 290, 170, 60));
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8-user-50 (1).png"))); // NOI18N
         jPanel4.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 50, 50, -1));
@@ -188,8 +284,22 @@ public class payments extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void payMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_payMouseClicked
-       int rowIndex = tbl_bill.getSelectedRow();
+    private void addMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addMouseClicked
+        addbilltype au = new addbilltype();
+        au.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_addMouseClicked
+
+    private void addpMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addpMouseEntered
+        addp.setBackground(lightorange);
+    }//GEN-LAST:event_addpMouseEntered
+
+    private void addpMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addpMouseExited
+        addp.setBackground(orange);
+    }//GEN-LAST:event_addpMouseExited
+
+    private void editMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editMouseClicked
+        int rowIndex = tbl_bill.getSelectedRow();
 
         if(rowIndex < 0 ){
             JOptionPane.showMessageDialog(null, "Please select an item.", "Click a Item", JOptionPane.WARNING_MESSAGE);
@@ -201,11 +311,12 @@ public class payments extends javax.swing.JFrame {
                 ResultSet rs = db.getData("SELECT * FROM bill_type WHERE bill_id = '" + tbl.getValueAt(rowIndex, 0) + "'");
 
                 if(rs.next()){
-                    viewBill uf = new viewBill();
+                    editBill uf = new editBill();
                     uf.bill_id.setText(""+rs.getInt("bill_id"));
                     uf.bill_name.setText(""+rs.getString("bill_name"));
                     uf.company.setText(""+rs.getString("company"));
                     uf.description.setText(""+rs.getString("description"));
+                    
 
                     uf.setVisible(true);
                     this.dispose();
@@ -214,24 +325,70 @@ public class payments extends javax.swing.JFrame {
                 System.out.println(""+e.getMessage());
             }
         }
-    }//GEN-LAST:event_payMouseClicked
+    }//GEN-LAST:event_editMouseClicked
 
-    private void addpMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addpMouseEntered
-        addp.setBackground(lightorange);
-    }//GEN-LAST:event_addpMouseEntered
+    private void editpMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editpMouseEntered
+        editp.setBackground(lightorange);
+    }//GEN-LAST:event_editpMouseEntered
 
-    private void addpMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addpMouseExited
-        addp.setBackground(orange);
-    }//GEN-LAST:event_addpMouseExited
+    private void editpMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editpMouseExited
+        editp.setBackground(orange);
+    }//GEN-LAST:event_editpMouseExited
+
+    private void deleteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteMouseClicked
+
+    }//GEN-LAST:event_deleteMouseClicked
+
+    private void refpMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_refpMouseEntered
+        refp.setBackground(lightorange);
+    }//GEN-LAST:event_refpMouseEntered
+
+    private void refpMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_refpMouseExited
+        refp.setBackground(orange);
+    }//GEN-LAST:event_refpMouseExited
+
+    private void delete1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_delete1MouseClicked
+   int rowindex = tbl_bill.getSelectedRow();
+if (rowindex < 0) {
+    JOptionPane.showMessageDialog(null, "Please select a bill type to delete!");
+} else {
+    int confirm = JOptionPane.showConfirmDialog(null, "Are you sure you want to delete this bill type?", "Confirm Deletion", JOptionPane.YES_NO_OPTION);
+    if (confirm == JOptionPane.YES_OPTION) {
+        dbconn dbc = new dbconn();
+        TableModel model = tbl_bill.getModel();
+        String id = model.getValueAt(rowindex, 0).toString(); // assuming first column is bill_type_id
+
+        dbc.updateData("DELETE FROM bill_type WHERE bill_id = '" + id + "'");
+
+        session sess = session.getInstance();
+        dbc.logActivity(sess.getId(), "Deleted bill type ID: " + id);
+
+         displayBillTypes();
+        JOptionPane.showMessageDialog(null, "Bill type deleted successfully!");
+    
+    }
+}
+
+    }//GEN-LAST:event_delete1MouseClicked
+
+    private void delpMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_delpMouseEntered
+        delp.setBackground(lightorange);
+    }//GEN-LAST:event_delpMouseEntered
+
+    private void delpMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_delpMouseExited
+        delp.setBackground(orange);
+    }//GEN-LAST:event_delpMouseExited
 
     private void logtxtMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logtxtMouseClicked
-        userDashboard ap = new userDashboard();
+        Adminpanel ap = new Adminpanel();
         ap.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_logtxtMouseClicked
 
     private void logpanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logpanelMouseClicked
-      
+        Adminpanel ap = new Adminpanel();
+        ap.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_logpanelMouseClicked
 
     private void logpanelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logpanelMouseEntered
@@ -259,20 +416,20 @@ public class payments extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(payments.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(billtype.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(payments.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(billtype.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(payments.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(billtype.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(payments.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(billtype.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new payments().setVisible(true);
+                new billtype().setVisible(true);
             }
         });
     }
@@ -280,7 +437,13 @@ public class payments extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Fname1;
     private javax.swing.JLabel Fname3;
+    private javax.swing.JLabel add;
     private javax.swing.JPanel addp;
+    private javax.swing.JLabel delete;
+    private javax.swing.JLabel delete1;
+    private javax.swing.JPanel delp;
+    private javax.swing.JLabel edit;
+    private javax.swing.JPanel editp;
     private javax.swing.JLabel id;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -291,7 +454,7 @@ public class payments extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JPanel logpanel;
     private javax.swing.JLabel logtxt;
-    private javax.swing.JLabel pay;
+    private javax.swing.JPanel refp;
     private javax.swing.JTable tbl_bill;
     private javax.swing.JLabel title2;
     // End of variables declaration//GEN-END:variables

@@ -5,7 +5,16 @@
  */
 package user;
 
+import Dashboards.loginform;
+import config.dbconn;
+import config.session;
 import java.awt.Color;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -18,7 +27,50 @@ public class userDashboard extends javax.swing.JFrame {
      */
     public userDashboard() {
         initComponents();
+        loadRecentPayments();
     }
+public void loadRecentPayments() {
+    dbconn db = new dbconn();
+    try (Connection con = db.getConnection()) {
+
+        String query = "SELECT t.transaction_id, b.bill_name, t.amount, t.payment_method, " +
+                       "t.billingperiod, t.transaction_date, t.status " +
+                       "FROM tbl_transaction t " +
+                       "JOIN bill_type b ON t.bill_id = b.bill_id " +
+                       "WHERE t.user_id = ? " +
+                       "ORDER BY t.transaction_date DESC LIMIT 10";
+
+        PreparedStatement pst = con.prepareStatement(query);
+        pst.setInt(1, session.getInstance().getId());
+        ResultSet rs = pst.executeQuery();
+
+        DefaultTableModel model = new DefaultTableModel();
+        model.setColumnIdentifiers(new String[] {
+            "Transaction ID", "Bill Name", "Amount", "Payment Method", "Billing Period", "Date", "Status"
+        });
+
+        while (rs.next()) {
+            model.addRow(new Object[] {
+                rs.getInt("transaction_id"),
+                rs.getString("bill_name"),
+                rs.getDouble("amount"),
+                rs.getString("payment_method"),
+                rs.getString("billingperiod"),
+                rs.getTimestamp("transaction_date"),
+                rs.getString("status")
+            });
+        }
+
+        tbl_recent.setModel(model);
+
+        rs.close();
+        pst.close();
+
+    } catch (SQLException ex) {
+        ex.printStackTrace();
+        JOptionPane.showMessageDialog(null, "Error loading recent payments!", "Error", JOptionPane.ERROR_MESSAGE);
+    }
+}
 
     Color orange = new Color(255,102,0);
     Color lightorange = new Color(245,216,127);
@@ -50,8 +102,20 @@ public class userDashboard extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         trans = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
+        jPanel10 = new javax.swing.JPanel();
+        logs2 = new javax.swing.JLabel();
+        logs4 = new javax.swing.JLabel();
+        logs5 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tbl_recent = new javax.swing.JTable();
+        logs3 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
+        jPanel7 = new javax.swing.JPanel();
+        acc_id = new javax.swing.JLabel();
+        acc_name = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        acc_lname1 = new javax.swing.JLabel();
 
         jList1.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
@@ -61,6 +125,11 @@ public class userDashboard extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jList1);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowActivated(java.awt.event.WindowEvent evt) {
+                formWindowActivated(evt);
+            }
+        });
 
         jPanel1.setBackground(new java.awt.Color(255, 204, 102));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -163,6 +232,42 @@ public class userDashboard extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(255, 102, 0));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel10.setBackground(new java.awt.Color(255, 204, 102));
+        jPanel10.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
+        jPanel10.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        logs2.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
+        logs2.setText("Start managing your payments today with confidence and convenience.");
+        jPanel10.add(logs2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 570, 50));
+
+        logs4.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
+        logs4.setText("Easily manage and pay your bills securely and on time—all in one place. ");
+        jPanel10.add(logs4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 570, 50));
+
+        logs5.setFont(new java.awt.Font("Arial Black", 1, 14)); // NOI18N
+        logs5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        logs5.setText("Welcome to the Bill Payments System!");
+        jPanel10.add(logs5, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 0, 360, 50));
+
+        jPanel2.add(jPanel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 640, 170));
+
+        tbl_recent.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "TransactionID", "BillName", "Amount", "Payment Methodl", "Billing Period", "Date", "Status"
+            }
+        ));
+        jScrollPane2.setViewportView(tbl_recent);
+
+        jPanel2.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 240, 640, 230));
+
+        logs3.setFont(new java.awt.Font("Arial Black", 1, 14)); // NOI18N
+        logs3.setText("Recent History");
+        jPanel2.add(logs3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 190, 340, 50));
+
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 90, 660, 480));
 
         jPanel3.setBackground(new java.awt.Color(255, 102, 0));
@@ -177,6 +282,28 @@ public class userDashboard extends javax.swing.JFrame {
             }
         });
         jPanel3.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 20, 150, 30));
+
+        jPanel7.setBackground(new java.awt.Color(255, 102, 0));
+        jPanel7.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        acc_id.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
+        acc_id.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        acc_id.setText("ID");
+        jPanel7.add(acc_id, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 40, 60, 20));
+
+        acc_name.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
+        acc_name.setText(" ADMIN");
+        jPanel7.add(acc_name, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 90, 20));
+
+        jLabel7.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
+        jLabel7.setText("ID:");
+        jPanel7.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 30, 20));
+
+        acc_lname1.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
+        acc_lname1.setText(" ADMIN");
+        jPanel7.add(acc_lname1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 10, 90, 20));
+
+        jPanel3.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 660, 70));
 
         jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 10, 660, 70));
 
@@ -202,10 +329,13 @@ public class userDashboard extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void transMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_transMouseClicked
-        // TODO add your handling code here:
+      Transaction ts = new Transaction();
+              ts.setVisible(true);
+              this.dispose();
     }//GEN-LAST:event_transMouseClicked
 
     private void logoutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoutMouseClicked
@@ -213,17 +343,19 @@ public class userDashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_logoutMouseClicked
 
     private void payMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_payMouseClicked
-        // TODO add your handling code here:
+       payments pm = new payments();
+       pm.setVisible(true);
+       this.dispose();
     }//GEN-LAST:event_payMouseClicked
 
     private void setMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_setMouseClicked
-        Userinfo uf = new Userinfo();
-        uf.setVisible(true);
-        this.dispose();
+      
     }//GEN-LAST:event_setMouseClicked
 
     private void settttMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_settttMouseClicked
-        // TODO add your handling code here:
+        Userinfo uf = new Userinfo();
+        uf.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_settttMouseClicked
 
     private void setMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_setMouseEntered
@@ -239,6 +371,20 @@ public class userDashboard extends javax.swing.JFrame {
         cp.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jLabel1MouseClicked
+
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+        session sess = session.getInstance();
+       if(sess.getId()== 0){
+       JOptionPane.showMessageDialog(null,"No Account, Log in First");
+       loginform Adminpanel = new loginform();
+       Adminpanel.setVisible(true);
+       this.dispose();
+       }else{
+            acc_name.setText(""+sess.getFname());
+            acc_lname1.setText(""+sess.getLname());
+            acc_id.setText(""+sess.getId());
+       }
+    }//GEN-LAST:event_formWindowActivated
 
     /**
      * @param args the command line arguments
@@ -276,25 +422,37 @@ public class userDashboard extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel acc_id;
+    private javax.swing.JLabel acc_lname1;
+    private javax.swing.JLabel acc_name;
     private javax.swing.JLabel dash;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JList<String> jList1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel logout;
+    private javax.swing.JLabel logs2;
+    private javax.swing.JLabel logs3;
+    private javax.swing.JLabel logs4;
+    private javax.swing.JLabel logs5;
     private javax.swing.JLabel pay;
     private javax.swing.JPanel set;
     private javax.swing.JLabel setttt;
+    private javax.swing.JTable tbl_recent;
     private javax.swing.JLabel trans;
     // End of variables declaration//GEN-END:variables
 }

@@ -68,6 +68,7 @@ public class changeemail extends javax.swing.JFrame {
         title2 = new javax.swing.JLabel();
         usertxt2 = new javax.swing.JLabel();
         id = new javax.swing.JLabel();
+        update1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -101,7 +102,7 @@ public class changeemail extends javax.swing.JFrame {
                 updateActionPerformed(evt);
             }
         });
-        backg3.add(update, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 330, 120, 40));
+        backg3.add(update, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 300, 120, 40));
 
         currentemail.setBackground(new java.awt.Color(255, 204, 102));
         currentemail.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
@@ -114,11 +115,11 @@ public class changeemail extends javax.swing.JFrame {
         backg3.add(currentemail, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 170, 280, 40));
 
         lname.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        lname.setText("CURRENT EMAIL");
+        lname.setText("Current Email:");
         backg3.add(lname, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 150, 130, -1));
 
         Fname.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        Fname.setText("CURRENT USER ID");
+        Fname.setText("Current User ID:");
         backg3.add(Fname, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 80, 130, -1));
 
         newemail.setBackground(new java.awt.Color(255, 204, 102));
@@ -137,13 +138,34 @@ public class changeemail extends javax.swing.JFrame {
         backg3.add(title2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 460, 60));
 
         usertxt2.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        usertxt2.setText("NEW EMAIL");
+        usertxt2.setText("New Email:");
         backg3.add(usertxt2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 220, 120, -1));
 
         id.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         id.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         id.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
         backg3.add(id, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 100, 280, 40));
+
+        update1.setBackground(new java.awt.Color(255, 255, 255));
+        update1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        update1.setText("BACK");
+        update1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                update1MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                update1MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                update1MouseExited(evt);
+            }
+        });
+        update1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                update1ActionPerformed(evt);
+            }
+        });
+        backg3.add(update1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 300, 120, 40));
 
         jPanel2.add(backg3, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 40, 460, 410));
 
@@ -290,6 +312,24 @@ try {
        }
     }//GEN-LAST:event_formWindowActivated
 
+    private void update1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_update1MouseClicked
+        Userinfo ui = new Userinfo();
+        ui.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_update1MouseClicked
+
+    private void update1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_update1MouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_update1MouseEntered
+
+    private void update1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_update1MouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_update1MouseExited
+
+    private void update1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_update1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_update1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -335,6 +375,7 @@ try {
     private javax.swing.JTextField newemail;
     private javax.swing.JLabel title2;
     private javax.swing.JButton update;
+    private javax.swing.JButton update1;
     private javax.swing.JLabel usertxt2;
     // End of variables declaration//GEN-END:variables
 }

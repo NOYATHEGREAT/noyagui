@@ -76,6 +76,7 @@ public class Adminpanel extends javax.swing.JFrame {
         jPanel8 = new javax.swing.JPanel();
         usertxt5 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
+        usertxt6 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         table_user = new javax.swing.JTable();
@@ -243,7 +244,7 @@ public class Adminpanel extends javax.swing.JFrame {
         });
         setpanel.add(usertxt4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 170, 30));
 
-        jPanel4.add(setpanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 390, 170, 60));
+        jPanel4.add(setpanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 380, 170, 50));
 
         jPanel8.setBackground(new java.awt.Color(255, 102, 0));
         jPanel8.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -264,11 +265,27 @@ public class Adminpanel extends javax.swing.JFrame {
         });
         jPanel8.add(usertxt5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 170, 40));
 
-        jPanel4.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 470, 170, 60));
+        jPanel4.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 500, 170, 60));
 
         jLabel4.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
         jLabel4.setText("      ADMIN");
         jPanel4.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, 160, 20));
+
+        usertxt6.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
+        usertxt6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        usertxt6.setText("BILL ");
+        usertxt6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                usertxt6MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                usertxt6MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                usertxt6MouseExited(evt);
+            }
+        });
+        jPanel4.add(usertxt6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 450, 170, 30));
 
         jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 170, 560));
 
@@ -371,7 +388,9 @@ public class Adminpanel extends javax.swing.JFrame {
     }//GEN-LAST:event_usertxtMouseExited
 
     private void usertxt3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_usertxt3MouseClicked
-        // TODO add your handling code here:
+        Transaction ts = new Transaction();
+        ts.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_usertxt3MouseClicked
 
     private void usertxt3MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_usertxt3MouseEntered
@@ -485,6 +504,20 @@ public class Adminpanel extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_usertxt5MouseExited
 
+    private void usertxt6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_usertxt6MouseClicked
+       billtype bt = new billtype();
+       bt.setVisible(true);
+       this.dispose();
+    }//GEN-LAST:event_usertxt6MouseClicked
+
+    private void usertxt6MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_usertxt6MouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_usertxt6MouseEntered
+
+    private void usertxt6MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_usertxt6MouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_usertxt6MouseExited
+
     /**
      * @param args the command line arguments
      */
@@ -553,5 +586,6 @@ public class Adminpanel extends javax.swing.JFrame {
     private javax.swing.JLabel usertxt3;
     private javax.swing.JLabel usertxt4;
     private javax.swing.JLabel usertxt5;
+    private javax.swing.JLabel usertxt6;
     // End of variables declaration//GEN-END:variables
 }

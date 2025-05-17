@@ -103,7 +103,7 @@ public class loginform extends javax.swing.JFrame {
         bodycolor.add(title1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, 390, 60));
 
         usertxt2.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        usertxt2.setText("USERNAME");
+        usertxt2.setText("Username");
         bodycolor.add(usertxt2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 240, 80, -1));
 
         username.setBackground(new java.awt.Color(255, 204, 102));
@@ -117,7 +117,7 @@ public class loginform extends javax.swing.JFrame {
         bodycolor.add(username, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 260, 280, 40));
 
         passtxt1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        passtxt1.setText("PASSWORD");
+        passtxt1.setText("Password");
         bodycolor.add(passtxt1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 310, 80, -1));
 
         pass.setBackground(new java.awt.Color(255, 204, 102));
@@ -157,11 +157,11 @@ public class loginform extends javax.swing.JFrame {
                 loginbtm1ActionPerformed(evt);
             }
         });
-        bgorange.add(loginbtm1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 420, 140, 40));
+        bgorange.add(loginbtm1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 390, 170, 40));
 
         createbtm.setBackground(new java.awt.Color(255, 255, 255));
         createbtm.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        createbtm.setText("CREATE ACCOUNT");
+        createbtm.setText("Create Account");
         createbtm.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 createbtmMouseClicked(evt);
@@ -178,7 +178,7 @@ public class loginform extends javax.swing.JFrame {
                 createbtmActionPerformed(evt);
             }
         });
-        bgorange.add(createbtm, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 480, 230, 40));
+        bgorange.add(createbtm, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 490, 170, 40));
 
         usertxt1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         usertxt1.setText("Forgot Password? Click here");
@@ -261,8 +261,10 @@ public class loginform extends javax.swing.JFrame {
                     ad.setVisible(true);
                     this.dispose();
                 } else if (type1.equals("User")) {
+                     JOptionPane.showMessageDialog(null, "Login Successfully!");
                     userDashboard ad = new userDashboard();
                     ad.setVisible(true);
+                   
                     this.dispose();
                 } else {
                     JOptionPane.showMessageDialog(null, "No account type found!");

@@ -47,11 +47,11 @@ public class Userinfo extends javax.swing.JFrame {
         userid1 = new javax.swing.JLabel();
         name = new javax.swing.JLabel();
         name1 = new javax.swing.JLabel();
-        pass = new javax.swing.JLabel();
         username = new javax.swing.JLabel();
         username1 = new javax.swing.JLabel();
         nemail = new javax.swing.JLabel();
         cn = new javax.swing.JLabel();
+        pass = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -85,7 +85,7 @@ public class Userinfo extends javax.swing.JFrame {
                 enterActionPerformed(evt);
             }
         });
-        backg3.add(enter, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 660, 180, 40));
+        backg3.add(enter, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 660, 200, 40));
 
         lname.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         lname.setText("USERNAME");
@@ -131,7 +131,7 @@ public class Userinfo extends javax.swing.JFrame {
                 enter1ActionPerformed(evt);
             }
         });
-        backg3.add(enter1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 730, 120, 40));
+        backg3.add(enter1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 710, 120, 40));
 
         enter2.setBackground(new java.awt.Color(255, 255, 255));
         enter2.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
@@ -152,7 +152,7 @@ public class Userinfo extends javax.swing.JFrame {
                 enter2ActionPerformed(evt);
             }
         });
-        backg3.add(enter2, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 420, 170, 40));
+        backg3.add(enter2, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 420, 200, 40));
 
         enter3.setBackground(new java.awt.Color(255, 255, 255));
         enter3.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
@@ -173,7 +173,7 @@ public class Userinfo extends javax.swing.JFrame {
                 enter3ActionPerformed(evt);
             }
         });
-        backg3.add(enter3, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 540, 170, 40));
+        backg3.add(enter3, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 540, 200, 40));
 
         Fname1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         Fname1.setText("USER ID");
@@ -191,10 +191,6 @@ public class Userinfo extends javax.swing.JFrame {
         name1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
         backg3.add(name1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 230, 280, 40));
 
-        pass.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        pass.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
-        backg3.add(pass, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 610, 280, 40));
-
         username.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         username.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
         backg3.add(username, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 300, 280, 40));
@@ -210,6 +206,9 @@ public class Userinfo extends javax.swing.JFrame {
         cn.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         cn.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
         backg3.add(cn, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 490, 280, 40));
+
+        pass.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        backg3.add(pass, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 610, 280, 40));
 
         jPanel2.add(backg3, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 40, 600, 790));
 
@@ -368,7 +367,7 @@ this.dispose();
     private javax.swing.JLabel name;
     private javax.swing.JLabel name1;
     private javax.swing.JLabel nemail;
-    private javax.swing.JLabel pass;
+    public javax.swing.JPasswordField pass;
     private javax.swing.JLabel title2;
     private javax.swing.JLabel userid1;
     private javax.swing.JLabel username;
